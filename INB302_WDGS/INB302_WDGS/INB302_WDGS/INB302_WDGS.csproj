@@ -34,6 +34,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="HomeScreen.cs" />
+    <Compile Include="Instructions.cs" />
+    <Compile Include="LoadingScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

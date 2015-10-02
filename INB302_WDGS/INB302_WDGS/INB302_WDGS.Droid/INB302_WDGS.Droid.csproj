@@ -91,6 +91,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\AndroidManifest.xml" />
+    <BundleResource Include="Resources\drawable\Default.png" />
+    <AndroidResource Include="Resources\drawable\logo.png" />
+    <AndroidResource Include="Resources\drawable\image.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\INB302_WDGS\INB302_WDGS.csproj">

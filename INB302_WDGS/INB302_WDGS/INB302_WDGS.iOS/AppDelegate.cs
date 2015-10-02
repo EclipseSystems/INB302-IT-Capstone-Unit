@@ -19,6 +19,9 @@ namespace INB302_WDGS.iOS {
         // You have 17 seconds to return from this method, or iOS will terminate your application.
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options) {
+            App.screenWidth = (int)UIScreen.MainScreen.Bounds.Width;
+            App.screenHeight = (int)UIScreen.MainScreen.Bounds.Height;
+
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
