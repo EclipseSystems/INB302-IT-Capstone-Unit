@@ -12,7 +12,8 @@ namespace INB302_WDGS
     {
         public HomeScreen()
         {
-            //NavigationPage.SetTitleIcon(this, "logo.png");
+            NavigationPage.SetTitleIcon(this, "logo.png");
+            NavigationPage.SetHasNavigationBar(this, false);
 
             RelativeLayout content = new RelativeLayout
             {

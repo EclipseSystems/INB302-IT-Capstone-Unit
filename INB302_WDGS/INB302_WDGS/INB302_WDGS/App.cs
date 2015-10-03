@@ -11,7 +11,11 @@ namespace INB302_WDGS {
         static public int screenWidth;
         static public int screenHeight;
 
-        public App() {
+        public App() {        
+
+            NavigationPage instructions = new NavigationPage(new Instructions());
+
+            NavigationPage.SetHasNavigationBar(instructions, false);
 
             MainPage = new NavigationPage(new Instructions());
 

@@ -15,14 +15,15 @@ namespace INB302_WDGS
         {
             var backgroundImage = new Image()
             {
-                Source = FileImageSource.FromFile("image.png"),
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                HorizontalOptions = LayoutOptions.FillAndExpand
+                Source = "background.png",
+                //VerticalOptions = LayoutOptions.FillAndExpand,
+                //HorizontalOptions = LayoutOptions.FillAndExpand
             };
 
             var logoImage = new Image()
             {
-                Source = "icon.png",
+                Source = "logo.png",
+                
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
 
@@ -34,7 +35,12 @@ namespace INB302_WDGS
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
 
-            var innerContent = new StackLayout();
+            var innerContent = new StackLayout
+            {
+                Padding = new Thickness(App.screenWidth / 7, App.screenHeight / 5, 0, 0),
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand
+            };
 
             innerContent.Children.Add(logoImage);
             innerContent.Children.Add(loadActivity);
@@ -50,8 +56,8 @@ namespace INB302_WDGS
             content.Children.Add(innerContent,
                 Constraint.Constant(0),
                 Constraint.Constant(0),
-                Constraint.RelativeToParent((Parent) => {return Parent.Width;}),
-                Constraint.RelativeToParent((Parent) => {return Parent.Height;}));
+                Constraint.RelativeToParent((Parent) => {return Parent.Width / 2;}),
+                Constraint.RelativeToParent((Parent) => {return Parent.Height / 2;}));
 
             this.Content = content;
         }
