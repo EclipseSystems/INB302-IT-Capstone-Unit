@@ -16,48 +16,45 @@ namespace INB302_WDGS
             var backgroundImage = new Image()
             {
                 Source = "background.png",
-                //VerticalOptions = LayoutOptions.FillAndExpand,
-                //HorizontalOptions = LayoutOptions.FillAndExpand
             };
 
             var logoImage = new Image()
             {
                 Source = "logo.png",
-                
-                VerticalOptions = LayoutOptions.CenterAndExpand
             };
 
             ActivityIndicator loadActivity = new ActivityIndicator
             {
-                Color = Device.OnPlatform(Color.Default, Color.Blue, Color.Default),
+                Color = Device.OnPlatform(Color.Default, Color.Default, Color.Default),
                 IsRunning = true,
                 IsVisible = true,
-                VerticalOptions = LayoutOptions.CenterAndExpand
-            };
-
-            var innerContent = new StackLayout
-            {
-                Padding = new Thickness(App.screenWidth / 7, App.screenHeight / 5, 0, 0),
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
 
+            AbsoluteLayout innerContent = new AbsoluteLayout();
+
             innerContent.Children.Add(logoImage);
+            AbsoluteLayout.SetLayoutFlags(logoImage, AbsoluteLayoutFlags.PositionProportional);
+            AbsoluteLayout.SetLayoutBounds(logoImage, new Rectangle(0.5, 0.4, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+
             innerContent.Children.Add(loadActivity);
+            AbsoluteLayout.SetLayoutFlags(loadActivity, AbsoluteLayoutFlags.PositionProportional);
+            AbsoluteLayout.SetLayoutBounds(loadActivity, new Rectangle(0.5, 0.8, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
 
             RelativeLayout content = new RelativeLayout();
-            
+
             content.Children.Add(backgroundImage,
                 Constraint.Constant(0),
                 Constraint.Constant(0),
-                Constraint.RelativeToParent((Parent) => {return Parent.Width;}),
-                Constraint.RelativeToParent((Parent) => {return Parent.Height;}));
+                Constraint.RelativeToParent((Parent) => { return App.screenWidth; }),
+                Constraint.RelativeToParent((Parent) => { return App.screenHeight; }));
 
             content.Children.Add(innerContent,
                 Constraint.Constant(0),
                 Constraint.Constant(0),
-                Constraint.RelativeToParent((Parent) => {return Parent.Width / 2;}),
-                Constraint.RelativeToParent((Parent) => {return Parent.Height / 2;}));
+                Constraint.RelativeToParent((Parent) => { return Parent.Width; }),
+                Constraint.RelativeToParent((Parent) => { return Parent.Height; }));
 
             this.Content = content;
         }
