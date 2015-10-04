@@ -19,12 +19,6 @@ namespace INB302_WDGS
             this.Navigation.PushModalAsync(new LoadingScreen());
             this.loadInstructions();
 
-            //StackLayout innerContent = new StackLayout
-            //{
-            //    HorizontalOptions = LayoutOptions.CenterAndExpand,
-            //    VerticalOptions = LayoutOptions.CenterAndExpand,
-            //};
-
             RelativeLayout content = new RelativeLayout();
 
             Grid pageGrid = new Grid
@@ -55,7 +49,7 @@ namespace INB302_WDGS
 
             ScrollView instructionText = new ScrollView
             {
-                Padding = new Thickness(4.5, 0, 0, 0),
+                Padding = new Thickness(5, 0, 2, 0),
                 BackgroundColor = Color.Black,
                 Content = new Label
                 {
@@ -68,10 +62,23 @@ namespace INB302_WDGS
                             "sociis natoque penatibus et magnis dis parturient montes, nascetur " +
                             "sociis natoque penatibus et magnis dis parturient montes, nascetur " +
                             "sociis natoque penatibus et magnis dis parturient montes, nascetur " +
+                            "sociis natoque penatibus et magnis dis parturient montes, nascetur " +
+                            "sociis natoque penatibus et magnis dis parturient montes, nascetur " +
+                            "sociis natoque penatibus et magnis dis parturient montes, nascetur " +
+                            "sociis natoque penatibus et magnis dis parturient montes, nascetur " +
+                            "sociis natoque penatibus et magnis dis parturient montes, nascetur " +
+                            "sociis natoque penatibus et magnis dis parturient montes, nascetur " +
+                            "sociis natoque penatibus et magnis dis parturient montes, nascetur " +
+                            "sociis natoque penatibus et magnis dis parturient montes, nascetur " +
+                            "sociis natoque penatibus et magnis dis parturient montes, nascetur " +
+                            "sociis natoque penatibus et magnis dis parturient montes, nascetur " +
+                            "sociis natoque penatibus et magnis dis parturient montes, nascetur " +
+                            "sociis natoque penatibus et magnis dis parturient montes, nascetur " +
+                            "sociis natoque penatibus et magnis dis parturient montes, nascetur " +
+                            "sociis natoque penatibus et magnis dis parturient montes, nascetur " +
                             "ridiculus mus. Suspendisse rhoncus augue urna, sed posuere orci",
                     TextColor = Color.Gray,
                     BackgroundColor = Color.Black,
-                    //Opacity = 0.7,
                     XAlign = TextAlignment.Start,
                     YAlign = TextAlignment.Start
                 }
@@ -82,7 +89,6 @@ namespace INB302_WDGS
                 Text = " Instructions:",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
-                //Opacity = 0.5,
                 FontSize = 20,
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.Center
@@ -95,7 +101,6 @@ namespace INB302_WDGS
                 Text = "1",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
-                //Opacity = 0.5,
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center
             }, 1, 3);
@@ -105,7 +110,6 @@ namespace INB302_WDGS
                 Text = "2",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
-                //Opacity = 0.5,
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center
             }, 2, 3);
@@ -115,17 +119,15 @@ namespace INB302_WDGS
                 Text = "3",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
-                //Opacity = 0.5,
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center
             }, 3, 3);
 
             Label skipLbl = new Label
             {
-                Text = "Skip  ",
+                Text = "Skip",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
-                //Opacity = 0.5,
                 FontSize = 20,
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center
@@ -138,77 +140,12 @@ namespace INB302_WDGS
 
             pageGrid.Children.Add(skipLbl, 4, 3);
 
-            //pageGrid.Children.Add(new Label
-            //{
-            //    Text = "1",
-            //    TextColor = Color.Silver,
-            //    XAlign = TextAlignment.Center,
-            //    YAlign = TextAlignment.Center
-            //}, 0, 2);
-
-            //pageGrid.Children.Add(new Label
-            //{
-            //    Text = "2",
-            //    TextColor = Color.Silver,
-            //    XAlign = TextAlignment.Center,
-            //    YAlign = TextAlignment.Center
-            //}, 1, 2);
-
-            //pageGrid.Children.Add(new Label
-            //{
-            //    Text = "3",
-            //    TextColor = Color.Silver,
-            //    XAlign = TextAlignment.Center,
-            //    YAlign = TextAlignment.Center
-            //}, 2, 2);
-
-            //Label skipLbl = new Label
-            //{
-            //    Text = "Skip",
-            //    TextColor = Color.Silver,
-            //    XAlign = TextAlignment.End,
-            //    YAlign = TextAlignment.Center
-            //};
-
-            //skipLbl.GestureRecognizers.Add(new TapGestureRecognizer
-            //{
-            //    Command = new Command(() => goToHomeScreen()),
-            //});
-
-            //pageGrid.Children.Add(skipLbl, 3, 2);
-
             var backgroundImage = new Image()
             {
                 Source = "background.png",
-                //VerticalOptions = LayoutOptions.FillAndExpand,
-                //HorizontalOptions = LayoutOptions.FillAndExpand
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                HorizontalOptions = LayoutOptions.FillAndExpand
             };
-
-            //var logoImage = new Image()
-            //{
-            //    Source = "icon.png",
-            //    VerticalOptions = LayoutOptions.CenterAndExpand
-            //};
-
-            //TableView innerContentTable = new TableView
-            //{
-            //    VerticalOptions = LayoutOptions.CenterAndExpand,
-            //    Intent = TableIntent.Form,
-            //    Root = new TableRoot()
-            //    {
-            //        new TableSection() 
-            //        { 
-            //            new ViewCell
-            //            {
-            //                View = pageGrid
-            //            }
-            //        }
-            //    }
-            //};
-
-            //innerContent.Children.Add(backgroundImage);
-            //innerContent.Children.Add(pageGrid);
-            //innerContent.Children.Add(innerContentTable);
 
             Frame innerContentWrapper = new Frame
             {
@@ -219,17 +156,14 @@ namespace INB302_WDGS
             content.Children.Add(backgroundImage,
                 Constraint.Constant(0),
                 Constraint.Constant(0),
-                Constraint.RelativeToParent((Parent) => { return Parent.Width; }),
-                Constraint.RelativeToParent((Parent) => { return Parent.Height; }));
+                Constraint.RelativeToParent((Parent) => { return App.screenWidth; }),
+                Constraint.RelativeToParent((Parent) => { return App.screenHeight; }));
 
             content.Children.Add(innerContentWrapper,
                 Constraint.Constant(0),
                 Constraint.Constant(0),
                 Constraint.RelativeToParent((Parent) => { return Parent.Width; }),
                 Constraint.RelativeToParent((Parent) => { return Parent.Height; }));
-
-            //innerContent.Children.Add(content);
-            //innerContent.Children.Add(pageGrid);
 
             this.Content = content;
         }
