@@ -13,13 +13,12 @@ namespace INB302_WDGS
     {
         public Instructions()
         {
-            NavigationPage.SetTitleIcon(this, "logo.png");
-            NavigationPage.SetHasNavigationBar(this, false);
-
-            this.Navigation.PushModalAsync(new LoadingScreen());
-            this.loadInstructions();
-
             RelativeLayout content = new RelativeLayout();
+            StackLayout innerContent = new StackLayout
+            {
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center
+            };
 
             Grid pageGrid = new Grid
             {
@@ -29,6 +28,8 @@ namespace INB302_WDGS
                 Opacity = 0.8,
                 RowSpacing = 2,
                 ColumnSpacing = 2,
+                IsClippedToBounds = true,
+                Padding = new Thickness(.5, 1, .5, 0),
                 RowDefinitions = {
                     new RowDefinition {Height = 0},
                     new RowDefinition {Height = 30},
@@ -51,6 +52,7 @@ namespace INB302_WDGS
             {
                 Padding = new Thickness(5, 0, 2, 0),
                 BackgroundColor = Color.Black,
+                IsClippedToBounds = true,
                 Content = new Label
                 {
                     Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
@@ -140,43 +142,38 @@ namespace INB302_WDGS
 
             pageGrid.Children.Add(skipLbl, 4, 3);
 
-            var backgroundImage = new Image()
+            Image backgroundImage = new Image()
             {
                 Source = "background.png",
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                HorizontalOptions = LayoutOptions.FillAndExpand
             };
 
-            Frame innerContentWrapper = new Frame
-            {
-                Padding = new Thickness(.5, 1, .5, 0),
-                Content = pageGrid,
-            };
+            innerContent.Children.Add(pageGrid);
 
             content.Children.Add(backgroundImage,
                 Constraint.Constant(0),
                 Constraint.Constant(0),
                 Constraint.RelativeToParent((Parent) => { return App.screenWidth; }),
-                Constraint.RelativeToParent((Parent) => { return App.screenHeight; }));
+                Constraint.RelativeToParent((Parent) => { return Device.OnPlatform(App.screenHeight + 20, App.screenHeight, App.screenHeight); }));
 
-            content.Children.Add(innerContentWrapper,
+            content.Children.Add(innerContent,
                 Constraint.Constant(0),
                 Constraint.Constant(0),
                 Constraint.RelativeToParent((Parent) => { return Parent.Width; }),
                 Constraint.RelativeToParent((Parent) => { return Parent.Height; }));
 
-            this.Content = content;
-        }
+            //this.Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
 
-        private async void loadInstructions()
-        {
-            await Task.Delay(8000);
-            await this.Navigation.PopModalAsync();
+            if (Device.OS == TargetPlatform.iOS)
+            {
+                content.Padding = new Thickness(0, 20, 0, 0);
+            }
+
+            this.Content = content;
         }
 
         private void goToHomeScreen()
         {
-            this.Navigation.PushModalAsync(new HomeScreen());
+            App.Current.MainPage = new HomeScreen();
         }
     }
 }

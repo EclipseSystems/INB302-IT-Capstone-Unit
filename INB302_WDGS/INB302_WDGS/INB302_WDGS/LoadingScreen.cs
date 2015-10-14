@@ -13,12 +13,12 @@ namespace INB302_WDGS
     {
         public LoadingScreen()
         {
-            var backgroundImage = new Image()
+            Image backgroundImage = new Image()
             {
                 Source = "background.png",
             };
 
-            var logoImage = new Image()
+            Image logoImage = new Image()
             {
                 Source = "logo.png",
             };
@@ -56,7 +56,16 @@ namespace INB302_WDGS
                 Constraint.RelativeToParent((Parent) => { return Parent.Width; }),
                 Constraint.RelativeToParent((Parent) => { return Parent.Height; }));
 
+            content.Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
+
             this.Content = content;
+            this.loadInstructions();
+        }
+
+        private async void loadInstructions()
+        {
+            await Task.Delay(3000);
+            App.Current.MainPage = new Instructions();
         }
     }
 }

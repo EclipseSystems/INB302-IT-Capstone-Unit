@@ -13,7 +13,7 @@ namespace INB302_WDGS {
 
         public App() {        
 
-            MainPage = new NavigationPage(new Instructions());
+            MainPage = new LoadingScreen();
 
         }
 

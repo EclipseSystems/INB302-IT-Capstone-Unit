@@ -12,16 +12,47 @@ namespace INB302_WDGS
     {
         public HomeScreen()
         {
-            NavigationPage.SetTitleIcon(this, "logo.png");
+            //NavigationPage.SetTitleIcon(this, "logo.png");
             NavigationPage.SetHasNavigationBar(this, false);
 
-            RelativeLayout content = new RelativeLayout
+            Image backgroundImage = new Image()
             {
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                HorizontalOptions = LayoutOptions.FillAndExpand
+                Source = "background.png",
             };
 
-            content.Children.Add(new Label { Text = "this is the home screen, it doesn't exist yet" },
+			Label skipLbl = new Label
+			{
+				Text = "Go to Activity questions",
+				BackgroundColor = Color.Black,
+				TextColor = Color.White,
+				FontSize = 20,
+                XAlign = TextAlignment.Center,
+                YAlign = TextAlignment.Center
+			};
+
+			skipLbl.GestureRecognizers.Add(new TapGestureRecognizer
+			{
+				Command = new Command(() => goToQuestionsScreen()),
+			});
+
+            RelativeLayout content = new RelativeLayout();
+
+			content.Children.Add(backgroundImage,
+                Constraint.Constant(0),
+                Constraint.Constant(0),
+                Constraint.RelativeToParent((Parent) => { return Parent.Width; }),
+                Constraint.RelativeToParent((Parent) => { return Parent.Height; }));
+
+            StackLayout innerContent = new StackLayout
+            {
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center,
+                Children = {
+                    skipLbl
+                }
+            };
+
+            content.Children.Add(innerContent,
                 Constraint.Constant(0),
                 Constraint.Constant(0),
                 Constraint.RelativeToParent((Parent) => { return Parent.Width; }),
@@ -29,5 +60,10 @@ namespace INB302_WDGS
 
             this.Content = content;
         }
+
+		private void goToQuestionsScreen()
+		{
+            App.Current.MainPage = new QuestionsScreen();
+		}
     }
 }
