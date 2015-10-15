@@ -56,9 +56,8 @@ namespace INB302_WDGS
                 Constraint.RelativeToParent((Parent) => { return Parent.Width; }),
                 Constraint.RelativeToParent((Parent) => { return Parent.Height; }));
 
-            content.Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
-
             this.Content = content;
+            this.Padding = new Thickness(0, Device.OnPlatform(10, 0, 0), 0, 0);
             this.loadInstructions();
         }
 

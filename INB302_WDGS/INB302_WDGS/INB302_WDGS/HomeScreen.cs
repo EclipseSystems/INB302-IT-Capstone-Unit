@@ -40,8 +40,8 @@ namespace INB302_WDGS
 			content.Children.Add(backgroundImage,
                 Constraint.Constant(0),
                 Constraint.Constant(0),
-                Constraint.RelativeToParent((Parent) => { return Parent.Width; }),
-                Constraint.RelativeToParent((Parent) => { return Parent.Height; }));
+                Constraint.RelativeToParent((Parent) => { return App.screenWidth; }),
+                Constraint.RelativeToParent((Parent) => { return App.screenHeight; }));
 
             StackLayout innerContent = new StackLayout
             {
@@ -59,6 +59,7 @@ namespace INB302_WDGS
                 Constraint.RelativeToParent((Parent) => { return Parent.Height; }));
 
             this.Content = content;
+            this.Padding = new Thickness(0, Device.OnPlatform(10, 0, 0), 0, 0);
         }
 
 		private void goToQuestionsScreen()

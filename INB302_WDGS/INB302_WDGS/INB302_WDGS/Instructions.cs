@@ -153,7 +153,7 @@ namespace INB302_WDGS
                 Constraint.Constant(0),
                 Constraint.Constant(0),
                 Constraint.RelativeToParent((Parent) => { return App.screenWidth; }),
-                Constraint.RelativeToParent((Parent) => { return Device.OnPlatform(App.screenHeight + 20, App.screenHeight, App.screenHeight); }));
+                Constraint.RelativeToParent((Parent) => { return App.screenHeight; }));
 
             content.Children.Add(innerContent,
                 Constraint.Constant(0),
@@ -163,12 +163,13 @@ namespace INB302_WDGS
 
             //this.Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
 
-            if (Device.OS == TargetPlatform.iOS)
-            {
-                content.Padding = new Thickness(0, 20, 0, 0);
-            }
+            //if (Device.OS == TargetPlatform.iOS)
+            //{
+            //    content.Padding = new Thickness(0, 20, 0, 0);
+            //}
 
             this.Content = content;
+            this.Padding = new Thickness(0, Device.OnPlatform(10, 0, 0), 0, 0);
         }
 
         private void goToHomeScreen()
