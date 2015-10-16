@@ -23,47 +23,64 @@ namespace INB302_WDGS
                 Source = "logo.png",
             };
 
+            //Loading indicator native for each platform
             ActivityIndicator loadActivity = new ActivityIndicator
             {
-                Color = Device.OnPlatform(Color.Default, Color.Default, Color.Default),
+                Color = Color.Default,
                 IsRunning = true,
                 IsVisible = true,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
 
+            //absolute layout to absolute position logo and loading indicator
             AbsoluteLayout innerContent = new AbsoluteLayout();
 
+            //adding and positioning logo to the absolute layout
             innerContent.Children.Add(logoImage);
             AbsoluteLayout.SetLayoutFlags(logoImage, AbsoluteLayoutFlags.PositionProportional);
             AbsoluteLayout.SetLayoutBounds(logoImage, new Rectangle(0.5, 0.4, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
 
+            //adding and positioning loading indicator
             innerContent.Children.Add(loadActivity);
             AbsoluteLayout.SetLayoutFlags(loadActivity, AbsoluteLayoutFlags.PositionProportional);
             AbsoluteLayout.SetLayoutBounds(loadActivity, new Rectangle(0.5, 0.8, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
 
+            //relative layout to create a background image
+            //then place the page content over it
             RelativeLayout content = new RelativeLayout();
 
+            //adding background image at screen resolution
             content.Children.Add(backgroundImage,
                 Constraint.Constant(0),
                 Constraint.Constant(0),
                 Constraint.RelativeToParent((Parent) => { return App.screenWidth; }),
                 Constraint.RelativeToParent((Parent) => { return App.screenHeight; }));
 
+            //adding absolute layout to display content on top of background image
             content.Children.Add(innerContent,
                 Constraint.Constant(0),
                 Constraint.Constant(0),
                 Constraint.RelativeToParent((Parent) => { return Parent.Width; }),
                 Constraint.RelativeToParent((Parent) => { return Parent.Height; }));
 
+            //make the relative layout the pages content
             this.Content = content;
-            this.Padding = new Thickness(0, Device.OnPlatform(10, 0, 0), 0, 0);
+            
+            //padding for iOS status bar (doesn't actually work no idea why)
+            this.Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
+
+            //load the instructions page
             this.loadInstructions();
         }
 
+        //function to load the instructions page
         private async void loadInstructions()
         {
+            //delay the load to create a loading experience
             await Task.Delay(3000);
+
+            //load the page
             App.Current.MainPage = new Instructions();
         }
     }

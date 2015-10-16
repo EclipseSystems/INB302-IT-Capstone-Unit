@@ -1640,8 +1640,11 @@ namespace INB302_WDGS.Droid
 			// aapt resource value: 0x7f02007c
 			public const int mr_ic_settings_light = 2130837628;
 			
+			// aapt resource value: 0x7f02007e
+			public const int notification_template_icon_bg = 2130837630;
+			
 			// aapt resource value: 0x7f02007d
-			public const int notification_template_icon_bg = 2130837629;
+			public const int QutLogo = 2130837629;
 			
 			static Drawable()
 			{

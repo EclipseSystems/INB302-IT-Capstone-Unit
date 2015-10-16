@@ -13,6 +13,7 @@ namespace INB302_WDGS
     {
         public Instructions()
         {
+            //creating each layout to host all the pages content
             RelativeLayout content = new RelativeLayout();
             StackLayout innerContent = new StackLayout
             {
@@ -20,6 +21,9 @@ namespace INB302_WDGS
                 HorizontalOptions = LayoutOptions.Center
             };
 
+            //creating a 5x6 grid 
+            //background set to white with row/column spacing
+            //which enables a border effect on the grid
             Grid pageGrid = new Grid
             {
                 VerticalOptions = LayoutOptions.CenterAndExpand,
@@ -48,6 +52,7 @@ namespace INB302_WDGS
                 }
             };
 
+            //scrollview for the large instruction text
             ScrollView instructionText = new ScrollView
             {
                 Padding = new Thickness(5, 0, 2, 0),
@@ -100,30 +105,12 @@ namespace INB302_WDGS
 
             pageGrid.Children.Add(new Label
             {
-                Text = "1",
+                Text = "",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center
-            }, 1, 3);
-
-            pageGrid.Children.Add(new Label
-            {
-                Text = "2",
-                BackgroundColor = Color.Black,
-                TextColor = Color.White,
-                XAlign = TextAlignment.Center,
-                YAlign = TextAlignment.Center
-            }, 2, 3);
-
-            pageGrid.Children.Add(new Label
-            {
-                Text = "3",
-                BackgroundColor = Color.Black,
-                TextColor = Color.White,
-                XAlign = TextAlignment.Center,
-                YAlign = TextAlignment.Center
-            }, 3, 3);
+            }, 1, 4, 3, 4);
 
             Label skipLbl = new Label
             {
@@ -169,7 +156,7 @@ namespace INB302_WDGS
             //}
 
             this.Content = content;
-            this.Padding = new Thickness(0, Device.OnPlatform(10, 0, 0), 0, 0);
+            this.Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
         }
 
         private void goToHomeScreen()

@@ -21,7 +21,7 @@
     <JavaMaximumHeapSize>
     </JavaMaximumHeapSize>
     <JavaOptions />
-    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <NuGetPackageImportStamp>9ca211bf</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -121,6 +121,7 @@
       <SubType>Designer</SubType>
     </Content>
     <BundleResource Include="Resources\drawable\Default.png" />
+	<AndroidResource Include="Resources\drawable\QutLogo.png" />
     <AndroidResource Include="Resources\drawable\background.png" />
     <AndroidResource Include="Resources\drawable-hdpi\background.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\background.png" />

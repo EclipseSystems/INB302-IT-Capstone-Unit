@@ -10,12 +10,31 @@ namespace INB302_WDGS
 {
     public class QuestionsScreen : ContentPage
     {
+        String currentFile = "activity1Questions.txt";
         public QuestionsScreen()
         {
             Image backgroundImage = new Image()
             {
                 Source = "background.png",
             };
+
+            Image logo = new Image
+            {
+                Source = "QutLogo.png",
+                HeightRequest = 45,
+                HorizontalOptions = LayoutOptions.StartAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand
+            };
+
+            StackLayout logoLayout = new StackLayout
+            {
+                BackgroundColor = Color.Black,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Padding = new Thickness(2, 0, 0, 0)
+            };
+
+            logoLayout.Children.Add(logo);
 
             Grid pageGrid = new Grid
             {
@@ -29,7 +48,7 @@ namespace INB302_WDGS
                 Padding = new Thickness(.5, 1, .5, 0),
                 RowDefinitions = {
                     new RowDefinition {Height = 0},
-                    new RowDefinition {Height = 30},
+                    new RowDefinition {Height = 50},
                     new RowDefinition {Height = App.screenHeight - 140},
                     new RowDefinition {Height = 30},
                     new RowDefinition {Height = 0}
@@ -37,9 +56,9 @@ namespace INB302_WDGS
                 ColumnDefinitions = 
                 {
                     new ColumnDefinition {Width = 0},
-                    new ColumnDefinition {Width = App.screenWidth / 4 - 20},
-                    new ColumnDefinition {Width = App.screenWidth / 4 - 20},
-                    new ColumnDefinition {Width = App.screenWidth / 4 - 20},
+                    new ColumnDefinition {Width = App.screenWidth / 4 - 15},
+                    new ColumnDefinition {Width = App.screenWidth / 4 - 15},
+                    new ColumnDefinition {Width = App.screenWidth / 4 - 15},
                     new ColumnDefinition {Width = App.screenWidth / 4},
                     new ColumnDefinition {Width = 0}
                 }
@@ -47,18 +66,19 @@ namespace INB302_WDGS
 
             Editor questions = new Editor
             {
-                Keyboard = Keyboard.Default
-                //BackgroundColor = Color.Black
+                Text = "",
+                Keyboard = Keyboard.Default,
+                //BackgroundColor = Color.Black //can't do this until after I make the custom renderer for iOS
             };
 
-            try
+            //try load from file
+            loadText(questions, currentFile);
+
+            //when questions unfocused save
+            questions.Unfocused += (sender, e) =>
             {
-                setQuestionText(questions);
-            }
-            catch
-            {
-                questions.Text = "1. hi talk to me please";
-            }
+                saveText(questions, currentFile);
+            };
 
             ScrollView QAText = new ScrollView
             {
@@ -70,59 +90,60 @@ namespace INB302_WDGS
 
             Label backLbl = new Label
             {
-                Text = " <",
+                Text = "<",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
                 FontSize = 24,
-                XAlign = TextAlignment.Start,
+                XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center
             };
 
             backLbl.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                Command = new Command(() => saveText(questions, 0))
+                Command = new Command(() => goBack())
             });
 
-            pageGrid.Children.Add(backLbl, 1, 1);
-
-            pageGrid.Children.Add(new Label
+            Label questLbl = new Label
             {
-                Text = "Qut logo",
-                BackgroundColor = Color.Black,
-                TextColor = Color.White,
-                FontSize = 20,
-                XAlign = TextAlignment.Start,
-                YAlign = TextAlignment.Center
-            }, 2, 5, 1, 2);
-
-            pageGrid.Children.Add(QAText, 1, 5, 2, 3);
-
-            pageGrid.Children.Add(new Label
-            {
-                Text = "1",
+                Text = "Questions",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center
-            }, 1, 3);
+            };
 
-            pageGrid.Children.Add(new Label
+            questLbl.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                Text = "2",
+                Command = new Command(() => loadText(questions, "activity1Questions.txt"))
+            });
+
+            Label triviaLbl = new Label
+            {
+                Text = "Trivia",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center
-            }, 2, 3);
+            };
 
-            pageGrid.Children.Add(new Label
+            triviaLbl.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                Text = "3",
+                Command = new Command(() => loadText(questions, "activity1Trivia.txt"))
+            });
+
+            Label taskLbl = new Label
+            {
+                Text = "Tasks",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center
-            }, 3, 3);
+            };
+
+            taskLbl.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() => loadText(questions, "activity1Tasks.txt")),
+            });
 
             Label nextLbl = new Label
             {
@@ -136,10 +157,22 @@ namespace INB302_WDGS
 
             nextLbl.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                Command = new Command(() => saveText(questions, 1)),
+                Command = new Command(() => goToNextActivity()),
             });
 
-            pageGrid.Children.Add(nextLbl, 4, 3);
+            pageGrid.Children.Add(backLbl, 1, 1); //back button
+
+            pageGrid.Children.Add(logoLayout, 2, 5, 1, 2); //qut logo
+
+            pageGrid.Children.Add(QAText, 1, 5, 2, 3); //scrolling editor text
+
+            pageGrid.Children.Add(questLbl, 1, 3); //questions button
+
+            pageGrid.Children.Add(triviaLbl, 2, 3); //trivia button
+
+            pageGrid.Children.Add(taskLbl, 3, 3); //tasks button
+
+            pageGrid.Children.Add(nextLbl, 4, 3); //next activity button
 
             RelativeLayout content = new RelativeLayout();
             StackLayout innerContent = new StackLayout
@@ -163,7 +196,7 @@ namespace INB302_WDGS
                 Constraint.RelativeToParent((Parent) => { return Parent.Height; }));
 
             this.Content = content;
-            this.Padding = new Thickness(0, Device.OnPlatform(10, 0, 0), 0, 0);
+            this.Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
         }
         private void goToNextActivity()
         {
@@ -174,19 +207,52 @@ namespace INB302_WDGS
             App.Current.MainPage = new HomeScreen();
         }
 
-        private void setQuestionText(Editor questionElement)
+        private void loadText(Editor questionElement, String fileName)
         {
-            questionElement.Text = DependencyService.Get<ISaveAndLoad>().LoadText("activity1Questions.txt");
+            /*  save the text from the previous question set before it swaps
+                this is only here because editor.unfocused() does not call
+                at all if the user clicks one of the question buttons
+            */
+            if (questionElement.Text != "")
+            {
+                saveText(questionElement, currentFile);
+            }
+
+            //change current file to the one loaded when saving
+            currentFile = fileName;
+
+            try
+            {
+                questionElement.Text = DependencyService.Get<ISaveAndLoad>().LoadText(fileName);
+            }
+            catch
+            {
+                switch (fileName)
+                {
+                    case "activity1Questions.txt":
+                        questionElement.Text = currentFile;
+                        break;
+                    case "activity1Trivia.txt":
+                        questionElement.Text = currentFile;
+                        break;
+                    case "activity1Tasks.txt":
+                        questionElement.Text = currentFile;
+                        break;
+                    default:
+                        currentFile = "null";
+                        questionElement.Text = "Something went wrong while loading," +
+                                               "Please try again by clicking the buttons" +
+                                               "below or going back and reloading the page";
+                        break;
+                }
+            }
         }
 
-        private void saveText(Editor questionElement, int page)
+        private void saveText(Editor questionElement, String fileName)
         {
-            DependencyService.Get<ISaveAndLoad>().SaveText("activity1Questions.txt", questionElement.Text);
-            if (page == 0)
+            if (fileName != "null")
             {
-                goBack();
-            } else {
-                goToNextActivity();
+                DependencyService.Get<ISaveAndLoad>().SaveText(fileName, questionElement.Text);
             }
         }
     }
