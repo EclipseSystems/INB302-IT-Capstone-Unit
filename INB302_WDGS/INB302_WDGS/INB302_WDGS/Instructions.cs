@@ -13,14 +13,17 @@ namespace INB302_WDGS
     {
         public Instructions()
         {
-            NavigationPage.SetTitleIcon(this, "logo.png");
-            NavigationPage.SetHasNavigationBar(this, false);
-
-            this.Navigation.PushModalAsync(new LoadingScreen());
-            this.loadInstructions();
-
+            //creating each layout to host all the pages content
             RelativeLayout content = new RelativeLayout();
+            StackLayout innerContent = new StackLayout
+            {
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center
+            };
 
+            //creating a 5x6 grid 
+            //background set to white with row/column spacing
+            //which enables a border effect on the grid
             Grid pageGrid = new Grid
             {
                 VerticalOptions = LayoutOptions.CenterAndExpand,
@@ -29,6 +32,8 @@ namespace INB302_WDGS
                 Opacity = 0.8,
                 RowSpacing = 2,
                 ColumnSpacing = 2,
+                IsClippedToBounds = true,
+                Padding = new Thickness(.5, 1, .5, 0),
                 RowDefinitions = {
                     new RowDefinition {Height = 0},
                     new RowDefinition {Height = 30},
@@ -47,10 +52,12 @@ namespace INB302_WDGS
                 }
             };
 
+            //scrollview for the large instruction text
             ScrollView instructionText = new ScrollView
             {
                 Padding = new Thickness(5, 0, 2, 0),
                 BackgroundColor = Color.Black,
+                IsClippedToBounds = true,
                 Content = new Label
                 {
                     Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
@@ -98,30 +105,12 @@ namespace INB302_WDGS
 
             pageGrid.Children.Add(new Label
             {
-                Text = "1",
+                Text = "",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center
-            }, 1, 3);
-
-            pageGrid.Children.Add(new Label
-            {
-                Text = "2",
-                BackgroundColor = Color.Black,
-                TextColor = Color.White,
-                XAlign = TextAlignment.Center,
-                YAlign = TextAlignment.Center
-            }, 2, 3);
-
-            pageGrid.Children.Add(new Label
-            {
-                Text = "3",
-                BackgroundColor = Color.Black,
-                TextColor = Color.White,
-                XAlign = TextAlignment.Center,
-                YAlign = TextAlignment.Center
-            }, 3, 3);
+            }, 1, 4, 3, 4);
 
             Label skipLbl = new Label
             {
@@ -140,18 +129,12 @@ namespace INB302_WDGS
 
             pageGrid.Children.Add(skipLbl, 4, 3);
 
-            var backgroundImage = new Image()
+            Image backgroundImage = new Image()
             {
                 Source = "background.png",
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                HorizontalOptions = LayoutOptions.FillAndExpand
             };
 
-            Frame innerContentWrapper = new Frame
-            {
-                Padding = new Thickness(.5, 1, .5, 0),
-                Content = pageGrid,
-            };
+            innerContent.Children.Add(pageGrid);
 
             content.Children.Add(backgroundImage,
                 Constraint.Constant(0),
@@ -159,24 +142,26 @@ namespace INB302_WDGS
                 Constraint.RelativeToParent((Parent) => { return App.screenWidth; }),
                 Constraint.RelativeToParent((Parent) => { return App.screenHeight; }));
 
-            content.Children.Add(innerContentWrapper,
+            content.Children.Add(innerContent,
                 Constraint.Constant(0),
                 Constraint.Constant(0),
                 Constraint.RelativeToParent((Parent) => { return Parent.Width; }),
                 Constraint.RelativeToParent((Parent) => { return Parent.Height; }));
 
-            this.Content = content;
-        }
+            //this.Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
 
-        private async void loadInstructions()
-        {
-            await Task.Delay(8000);
-            await this.Navigation.PopModalAsync();
+            //if (Device.OS == TargetPlatform.iOS)
+            //{
+            //    content.Padding = new Thickness(0, 20, 0, 0);
+            //}
+
+            this.Content = content;
+            this.Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
         }
 
         private void goToHomeScreen()
         {
-            this.Navigation.PushModalAsync(new HomeScreen());
+            App.Current.MainPage = new HomeScreen();
         }
     }
 }
