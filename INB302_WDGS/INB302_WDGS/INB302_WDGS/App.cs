@@ -10,6 +10,7 @@ namespace INB302_WDGS {
 
         static public int screenWidth;
         static public int screenHeight;
+        static public bool cameraAccessGranted;
 
         public App() {        
 

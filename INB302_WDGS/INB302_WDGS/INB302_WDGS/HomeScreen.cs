@@ -35,14 +35,6 @@ namespace INB302_WDGS
 				Command = new Command(() => goToQuestionsScreen()),
 			});
 
-            RelativeLayout content = new RelativeLayout();
-
-			content.Children.Add(backgroundImage,
-                Constraint.Constant(0),
-                Constraint.Constant(0),
-                Constraint.RelativeToParent((Parent) => { return App.screenWidth; }),
-                Constraint.RelativeToParent((Parent) => { return App.screenHeight; }));
-
             StackLayout innerContent = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.Center,
@@ -52,14 +44,9 @@ namespace INB302_WDGS
                 }
             };
 
-            content.Children.Add(innerContent,
-                Constraint.Constant(0),
-                Constraint.Constant(0),
-                Constraint.RelativeToParent((Parent) => { return Parent.Width; }),
-                Constraint.RelativeToParent((Parent) => { return Parent.Height; }));
-
-            this.Content = content;
+            this.Content = innerContent;
             this.Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
+            this.BackgroundImage = "background.png";
         }
 
 		private void goToQuestionsScreen()

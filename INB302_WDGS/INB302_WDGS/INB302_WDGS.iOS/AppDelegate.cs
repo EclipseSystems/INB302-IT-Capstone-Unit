@@ -5,6 +5,10 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
+using XLabs.Ioc;
+using XLabs.Platform.Device;
+using XLabs.Platform.Services;
+
 namespace INB302_WDGS.iOS {
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
     // User Interface of the application, as well as listening (and optionally responding) to 
@@ -21,6 +25,16 @@ namespace INB302_WDGS.iOS {
         public override bool FinishedLaunching(UIApplication app, NSDictionary options) {
             App.screenWidth = (int)UIScreen.MainScreen.Bounds.Width;
             App.screenHeight = (int)UIScreen.MainScreen.Bounds.Height;
+            App.cameraAccessGranted = false;
+
+            #region Resolver Init
+            SimpleContainer container = new SimpleContainer();
+            container.Register<IDevice>(t => AppleDevice.CurrentDevice);
+            container.Register<IDisplay>(t => t.Resolve<IDevice>().Display);
+            container.Register<INetwork>(t => t.Resolve<IDevice>().Network);
+
+            Resolver.SetResolver(container.GetResolver());
+            #endregion
 
             global::Xamarin.Forms.Forms.Init();
             global::Xamarin.FormsMaps.Init();

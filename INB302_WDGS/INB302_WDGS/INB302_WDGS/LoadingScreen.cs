@@ -46,29 +46,14 @@ namespace INB302_WDGS
             AbsoluteLayout.SetLayoutFlags(loadActivity, AbsoluteLayoutFlags.PositionProportional);
             AbsoluteLayout.SetLayoutBounds(loadActivity, new Rectangle(0.5, 0.8, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
 
-            //relative layout to create a background image
-            //then place the page content over it
-            RelativeLayout content = new RelativeLayout();
-
-            //adding background image at screen resolution
-            content.Children.Add(backgroundImage,
-                Constraint.Constant(0),
-                Constraint.Constant(0),
-                Constraint.RelativeToParent((Parent) => { return App.screenWidth; }),
-                Constraint.RelativeToParent((Parent) => { return App.screenHeight; }));
-
-            //adding absolute layout to display content on top of background image
-            content.Children.Add(innerContent,
-                Constraint.Constant(0),
-                Constraint.Constant(0),
-                Constraint.RelativeToParent((Parent) => { return Parent.Width; }),
-                Constraint.RelativeToParent((Parent) => { return Parent.Height; }));
-
             //make the relative layout the pages content
-            this.Content = content;
-            
-            //padding for iOS status bar (doesn't actually work no idea why)
+            this.Content = innerContent;
+
+            //account for iOS status bar
             this.Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
+
+            //load the background image
+            this.BackgroundImage = "background.png";
 
             //load the instructions page
             this.loadInstructions();
