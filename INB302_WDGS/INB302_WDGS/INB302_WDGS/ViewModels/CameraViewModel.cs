@@ -1,4 +1,5 @@
-﻿//**************************************************************************
+﻿using INB302_WDGS;
+//**************************************************************************
 //  The code in this class is same as found in the XLabs on GitHub.
 //  (The link is: https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/Samples/XLabs.Sample/ViewModel/CameraViewModel.cs)
 //
@@ -97,6 +98,7 @@ namespace XPA_PickMedia_XLabs_XFP
                     if (t.IsFaulted)
                     {
                         Status = t.Exception.InnerException.ToString();
+                        DependencyService.Get<ISaveAndLoad>().checkCameraAccess();
                     }
                     else if (t.IsCanceled)
                     {
@@ -107,14 +109,17 @@ namespace XPA_PickMedia_XLabs_XFP
                         var mediaFile = t.Result;
                         ImageSource = ImageSource.FromStream(() => mediaFile.Source);
 
+                        DependencyService.Get<ISaveAndLoad>().checkCameraAccess();
                         return mediaFile;
                     }
 
+                    DependencyService.Get<ISaveAndLoad>().checkCameraAccess();
                     return null;
                 }, _scheduler);
             }
             else
             {
+                DependencyService.Get<ISaveAndLoad>().checkCameraAccess();
                 return null;
             }
 		}

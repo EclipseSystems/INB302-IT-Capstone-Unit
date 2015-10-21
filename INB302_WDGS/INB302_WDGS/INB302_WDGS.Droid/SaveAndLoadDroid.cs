@@ -48,12 +48,6 @@ namespace INB302_WDGS.Droid
 
         public void saveImageToGallery(string fileName, byte[] imageData)
         {
-            //var filePath = getFilePath(fileName);
-            //using (var fs = File.Create(filePath))
-            //{
-            //    streamIn.CopyTo(fs);
-            //}
-
             var dir = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDcim);
             var pictures = dir.AbsolutePath;
             //adding a time stamp time file name to allow saving more than one image... otherwise it overwrites the previous saved image of the same name

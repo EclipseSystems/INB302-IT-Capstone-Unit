@@ -50,7 +50,7 @@ namespace INB302_WDGS
             Image logo = new Image
             {
                 Source = "QutLogoWhite.png",
-                HeightRequest = App.screenHeight - 519,
+                HeightRequest = (App.screenHeight / 12) - 4,
                 HorizontalOptions = LayoutOptions.StartAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
@@ -69,9 +69,9 @@ namespace INB302_WDGS
                 Padding = new Thickness(.5, 1, .5, 0),
                 RowDefinitions = {
                     new RowDefinition {Height = 0},
-                    new RowDefinition {Height = App.screenHeight - 515},
-                    new RowDefinition {Height = App.screenHeight - 160},
-                    new RowDefinition {Height = App.screenHeight - 515},
+                    new RowDefinition {Height = App.screenHeight / 12},
+                    new RowDefinition {Height = App.screenHeight - 140},
+                    new RowDefinition {Height = App.screenHeight / 12},
                     new RowDefinition {Height = 0}
                 },
                 ColumnDefinitions = 
@@ -311,8 +311,6 @@ namespace INB302_WDGS
         }
         private async void takePicture()
         {
-            DependencyService.Get<ISaveAndLoad>().checkCameraAccess();
-
             if (App.cameraAccessGranted) { 
                 var mediaFile = await cameraOps.TakePicture();
 

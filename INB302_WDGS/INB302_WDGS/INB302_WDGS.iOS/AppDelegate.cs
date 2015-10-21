@@ -25,7 +25,7 @@ namespace INB302_WDGS.iOS {
         public override bool FinishedLaunching(UIApplication app, NSDictionary options) {
             App.screenWidth = (int)UIScreen.MainScreen.Bounds.Width;
             App.screenHeight = (int)UIScreen.MainScreen.Bounds.Height;
-            App.cameraAccessGranted = false;
+            App.cameraAccessGranted = true;
 
             #region Resolver Init
             SimpleContainer container = new SimpleContainer();

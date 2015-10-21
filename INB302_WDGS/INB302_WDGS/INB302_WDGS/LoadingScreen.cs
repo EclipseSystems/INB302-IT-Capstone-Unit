@@ -13,11 +13,6 @@ namespace INB302_WDGS
     {
         public LoadingScreen()
         {
-            Image backgroundImage = new Image()
-            {
-                Source = "background.png",
-            };
-
             Image logoImage = new Image()
             {
                 Source = "logo.png",

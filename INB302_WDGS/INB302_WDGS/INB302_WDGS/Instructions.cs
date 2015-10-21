@@ -49,9 +49,9 @@ namespace INB302_WDGS
                 Padding = new Thickness(.5, 1, .5, 0),
                 RowDefinitions = {
                     new RowDefinition {Height = 0},
-                    new RowDefinition {Height = App.screenHeight - 530},
+                    new RowDefinition {Height = App.screenHeight / 12},
                     new RowDefinition {Height = App.screenHeight - 140},
-                    new RowDefinition {Height = App.screenHeight - 530},
+                    new RowDefinition {Height = App.screenHeight / 12},
                     new RowDefinition {Height = 0}
                 },
                 ColumnDefinitions = 
@@ -116,11 +116,6 @@ namespace INB302_WDGS
             });
 
             pageGrid.Children.Add(skipLbl, 4, 3);
-
-            Image backgroundImage = new Image()
-            {
-                Source = "background.png",
-            };
 
             innerContent.Children.Add(pageGrid);
 
