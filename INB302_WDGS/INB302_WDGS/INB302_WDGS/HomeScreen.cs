@@ -30,12 +30,28 @@ namespace INB302_WDGS
 				Command = new Command(() => goToQuestionsScreen()),
 			});
 
+            Label skip2Lbl = new Label
+            {
+                Text = "Go to Second Activity questions",
+                BackgroundColor = Color.Black,
+                TextColor = Color.White,
+                FontSize = 20,
+                XAlign = TextAlignment.Center,
+                YAlign = TextAlignment.Center
+            };
+
+            skip2Lbl.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() => goToQuestionsScreen2()),
+            });
+
             StackLayout innerContent = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Center,
                 Children = {
-                    skipLbl
+                    skipLbl,
+                    skip2Lbl
                 }
             };
 
@@ -49,5 +65,11 @@ namespace INB302_WDGS
             App.currentActivity = "1";
             App.Current.MainPage = new QuestionsScreen();
 		}
+
+        private void goToQuestionsScreen2()
+        {
+            App.currentActivity = "2";
+            App.Current.MainPage = new QuestionsScreen();
+        }
     }
 }

@@ -321,6 +321,113 @@ namespace INB302_WDGS
             questions.InvalidateLayout();
         }
 
+        private String getFileText(String fileName)
+        {
+            if (App.currentActivity == "1") 
+            {
+                switch (fileName)
+                {
+                    case "activity1Questions.txt":
+                        return currentFile;
+                    case "activity1Trivia.txt":
+                        return currentFile;
+                    case "activity1Tasks.txt":
+                        return currentFile;
+                    default:
+                        break;
+                }
+
+            }
+            else if (App.currentActivity == "2")
+            {
+                switch (fileName)
+                {
+                    case "activity2Questions.txt":
+                        return currentFile;
+                    case "activity2Trivia.txt":
+                        return currentFile;
+                    case "activity2Tasks.txt":
+                        return currentFile;
+                    default:
+                        break;
+                }
+            }
+            else if (App.currentActivity == "3")
+            {
+                switch (fileName)
+                {
+                    case "activity3Questions.txt":
+                        return currentFile;
+                    case "activity3Trivia.txt":
+                        return currentFile;
+                    case "activity3Tasks.txt":
+                        return currentFile;
+                    default:
+                        break;
+                }
+            }
+            else if (App.currentActivity == "4")
+            {
+                switch (fileName)
+                {
+                    case "activity4Questions.txt":
+                        return currentFile;
+                    case "activity4Trivia.txt":
+                        return currentFile;
+                    case "activity4Tasks.txt":
+                        return currentFile;
+                    default:
+                        break;
+                }
+            }
+            else if (App.currentActivity == "5")
+            {
+                switch (fileName)
+                {
+                    case "activity5Questions.txt":
+                        return currentFile;
+                    case "activity5Trivia.txt":
+                        return currentFile;
+                    case "activity5Tasks.txt":
+                        return currentFile;
+                    default:
+                        break;
+                }
+            }
+            else if (App.currentActivity == "6")
+            {
+                switch (fileName)
+                {
+                    case "activity6Questions.txt":
+                        return currentFile;
+                    case "activity6Trivia.txt":
+                        return currentFile;
+                    case "activity6Tasks.txt":
+                        return currentFile;
+                    default:
+                        break;
+                }
+            }
+            else if (App.currentActivity == "7")
+            {
+                switch (fileName)
+                {
+                    case "activity7Questions.txt":
+                        return currentFile;
+                    case "activity7Trivia.txt":
+                        return currentFile;
+                    case "activity7Tasks.txt":
+                        return currentFile;
+                    default:
+                        break;
+                }
+            }
+
+            return "Something went wrong while loading," +
+                   "Please try again by clicking the buttons" +
+                   "below or clicking back and reloading the page";
+        }
+
         private void loadText(Editor questionElement, String fileName)
         {
             /*  save the text from the previous question set before it swaps
@@ -341,24 +448,7 @@ namespace INB302_WDGS
             }
             catch
             {
-                switch (fileName)
-                {
-                    case "activity1Questions.txt":
-                        questionElement.Text = currentFile;
-                        break;
-                    case "activity1Trivia.txt":
-                        questionElement.Text = currentFile;
-                        break;
-                    case "activity1Tasks.txt":
-                        questionElement.Text = currentFile;
-                        break;
-                    default:
-                        currentFile = "null";
-                        questionElement.Text = "Something went wrong while loading," +
-                                               "Please try again by clicking the buttons" +
-                                               "below or going back and reloading the page";
-                        break;
-                }
+                questionElement.Text = getFileText(fileName);
             }
         }
 
