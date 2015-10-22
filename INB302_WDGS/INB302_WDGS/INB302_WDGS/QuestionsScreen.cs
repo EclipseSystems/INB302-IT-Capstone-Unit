@@ -26,7 +26,7 @@ namespace INB302_WDGS
 
     public class QuestionsScreen : ContentPage
     {
-        String currentFile = "activity1Questions.txt";
+        String currentFile = "activity" + App.currentActivity + "Questions.txt";
         private MyEditor questions;
         CameraViewModel cameraOps = null;
 
@@ -34,17 +34,44 @@ namespace INB302_WDGS
         {
             cameraOps = new CameraViewModel();
 
-            Image backgroundImage = new Image()
-            {
-                Source = "background.png",
-            };
-
             StackLayout logoLayout = new StackLayout
             {
                 BackgroundColor = Color.Black,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 Padding = new Thickness(4, 0, 0, 0)
+            };
+
+            StackLayout questionIconLayout = new StackLayout
+            {
+                BackgroundColor = Color.Black,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Padding = new Thickness(0, 2, 0, 0)
+            };
+
+            StackLayout triviaIconLayout = new StackLayout
+            {
+                BackgroundColor = Color.Black,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Padding = new Thickness(0, 2, 0, 0)
+            };
+
+            StackLayout taskIconLayout = new StackLayout
+            {
+                BackgroundColor = Color.Black,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Padding = new Thickness(0, 2, 0, 0)
+            };
+
+            StackLayout cameraIconLayout = new StackLayout
+            {
+                BackgroundColor = Color.Black,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Padding = new Thickness(0, 2, 0, 0)
             };
 
             Image logo = new Image
@@ -55,6 +82,39 @@ namespace INB302_WDGS
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
 
+            Image cameraIcon = new Image
+            {
+                Source = "cameraIcon.png",
+                HeightRequest = (App.screenHeight / 12) - 4,
+                WidthRequest = 30
+            };
+
+            Image questionIcon = new Image
+            {
+                Source = "questionIcon.png",
+                HeightRequest = (App.screenHeight / 12) - 4,
+                WidthRequest = 30
+            };
+
+            Image triviaIcon = new Image
+            {
+                Source = "triviaIcon.png",
+                BackgroundColor = Color.Black,
+                HeightRequest = (App.screenHeight / 12) - 4,
+                WidthRequest = 30
+            };
+
+            Image taskIcon = new Image
+            {
+                Source = "taskIcon.png",
+                HeightRequest = (App.screenHeight / 12) - 4,
+                WidthRequest = 30
+            };
+
+            questionIconLayout.Children.Add(questionIcon);
+            triviaIconLayout.Children.Add(triviaIcon);
+            taskIconLayout.Children.Add(taskIcon);
+            cameraIconLayout.Children.Add(cameraIcon);
             logoLayout.Children.Add(logo);
 
             Grid pageGrid = new Grid
@@ -77,12 +137,12 @@ namespace INB302_WDGS
                 ColumnDefinitions = 
                 {
                     new ColumnDefinition {Width = 0},
-                    new ColumnDefinition {Width = App.screenWidth - 290},
-                    new ColumnDefinition {Width = App.screenWidth / 5 - 28},
+                    new ColumnDefinition {Width = App.screenWidth / 10},
+                    new ColumnDefinition {Width = App.screenWidth / 5 - 32},
                     new ColumnDefinition {Width = App.screenWidth / 5},
                     new ColumnDefinition {Width = App.screenWidth / 5},
                     new ColumnDefinition {Width = App.screenWidth / 5},
-                    new ColumnDefinition {Width = App.screenWidth - 290},
+                    new ColumnDefinition {Width = App.screenWidth / 10},
                     new ColumnDefinition {Width = 0}
                 }
             };
@@ -141,9 +201,9 @@ namespace INB302_WDGS
                 YAlign = TextAlignment.Center
             };
 
-            questLbl.GestureRecognizers.Add(new TapGestureRecognizer
+            questionIcon.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                Command = new Command(() => loadText(questions, "activity1Questions.txt"))
+                Command = new Command(() => loadText(questions, "activity" + App.currentActivity + "Questions.txt"))
             });
 
             Label triviaLbl = new Label
@@ -155,9 +215,9 @@ namespace INB302_WDGS
                 YAlign = TextAlignment.Center
             };
 
-            triviaLbl.GestureRecognizers.Add(new TapGestureRecognizer
+            triviaIcon.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                Command = new Command(() => loadText(questions, "activity1Trivia.txt"))
+                Command = new Command(() => loadText(questions, "activity" + App.currentActivity + "Trivia.txt"))
             });
 
             Label taskLbl = new Label
@@ -169,9 +229,9 @@ namespace INB302_WDGS
                 YAlign = TextAlignment.Center
             };
 
-            taskLbl.GestureRecognizers.Add(new TapGestureRecognizer
+            taskIcon.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                Command = new Command(() => loadText(questions, "activity1Tasks.txt")),
+                Command = new Command(() => loadText(questions, "activity" + App.currentActivity + "Tasks.txt")),
             });
 
             Label nextLbl = new Label
@@ -198,7 +258,7 @@ namespace INB302_WDGS
                 YAlign = TextAlignment.Center
             };
 
-            cameraLbl.GestureRecognizers.Add(new TapGestureRecognizer
+            cameraIcon.GestureRecognizers.Add(new TapGestureRecognizer
             {
                 Command = new Command(() => takePicture()),
             });
@@ -209,13 +269,13 @@ namespace INB302_WDGS
 
             pageGrid.Children.Add(questionContent, 1, 7, 2, 3); //scrolling editor text
 
-            pageGrid.Children.Add(questLbl, 1, 3, 3, 4); //questions button
+            pageGrid.Children.Add(questionIconLayout, 1, 3, 3, 4); //questions button
 
-            pageGrid.Children.Add(triviaLbl, 3, 3); //trivia button
+            pageGrid.Children.Add(triviaIconLayout, 3, 3); //trivia button
 
-            pageGrid.Children.Add(taskLbl, 4, 3); //tasks button
+            pageGrid.Children.Add(taskIconLayout, 4, 3); //tasks button
 
-            pageGrid.Children.Add(cameraLbl, 5, 3); //camera button once implemented
+            pageGrid.Children.Add(cameraIconLayout, 5, 3); //camera button
 
             pageGrid.Children.Add(nextLbl, 6, 3); //next activity button
 
@@ -309,6 +369,7 @@ namespace INB302_WDGS
                 DependencyService.Get<ISaveAndLoad>().SaveText(fileName, questionElement.Text);
             }
         }
+
         private async void takePicture()
         {
             if (App.cameraAccessGranted) { 

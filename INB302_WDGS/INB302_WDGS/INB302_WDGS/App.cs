@@ -10,12 +10,19 @@ namespace INB302_WDGS {
 
         static public int screenWidth;
         static public int screenHeight;
+        static public string currentActivity = "0";
         static public bool cameraAccessGranted;
 
-        public App() {        
+        public App() {
 
-            MainPage = new LoadingScreen();
-
+            if (Device.OS == TargetPlatform.iOS)
+            {
+                MainPage = new Instructions();
+            }
+            else
+            {
+                MainPage = new LoadingScreen();
+            }
         }
 
         protected override void OnStart() {

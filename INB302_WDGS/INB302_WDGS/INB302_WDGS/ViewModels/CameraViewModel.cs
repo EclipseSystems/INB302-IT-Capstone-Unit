@@ -1,24 +1,19 @@
-﻿using INB302_WDGS;
-//**************************************************************************
+﻿//**************************************************************************
 //  The code in this class is same as found in the XLabs on GitHub.
 //  (The link is: https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/Samples/XLabs.Sample/ViewModel/CameraViewModel.cs)
 //
 //  The exceptions are:
-//    1) The scope of the following 3 methods have been
+//    1) The scope of the following method has been
 //         changed from 'private' to 'public', so that they can be called directly
 //         from another method / event in which using BindingContext to this class
 //         is not possible:
-//           1. TakePicture ()
-//           2. SelectPicture ()
-//           3. SelectVideo ()
+//         - TakePicture()
 //
-//   2) ViewType declaration is commented.
-//
-//   3) In SelectPicture () method, setting VideoInfo to the MediaFile.Path
-//
-//  Dated: Feb. 26, 2015
-//
+//    2) The methods used for selecting videos and images
+//       have been removed due to being unnecessary for the
+//       WDGS app.
 //**************************************************************************
+using INB302_WDGS;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using XLabs.Forms.Mvvm;
@@ -28,15 +23,12 @@ using XLabs.Platform.Services.Media;
 
 namespace XPA_PickMedia_XLabs_XFP
 {
-	//[ViewType(typeof(CameraPage))]
-
 	public class CameraViewModel : ViewModel
 	{
 		private readonly TaskScheduler _scheduler = TaskScheduler.FromCurrentSynchronizationContext();
 		private IMediaPicker _Mediapicker;
 		private ImageSource _ImageSource;
 		private Command _TakePictureCommand;
-		private Command _SelectPictureCommand;
 		private string _Status;
 
 		public CameraViewModel ()
@@ -55,14 +47,6 @@ namespace XPA_PickMedia_XLabs_XFP
 			get {
 				return _TakePictureCommand ?? (_TakePictureCommand =
 					new Command (async () => await TakePicture (), () => true));
-			}
-		}
-
-		public Command SelectPictureCommand
-		{
-			get {
-				return _SelectPictureCommand ?? (_SelectPictureCommand =
-					new Command (async () => await SelectPicture (), () => true));
 			}
 		}
 
@@ -108,8 +92,7 @@ namespace XPA_PickMedia_XLabs_XFP
                     {
                         var mediaFile = t.Result;
                         ImageSource = ImageSource.FromStream(() => mediaFile.Source);
-
-                        DependencyService.Get<ISaveAndLoad>().checkCameraAccess();
+     
                         return mediaFile;
                     }
 
@@ -122,34 +105,6 @@ namespace XPA_PickMedia_XLabs_XFP
                 DependencyService.Get<ISaveAndLoad>().checkCameraAccess();
                 return null;
             }
-		}
-
-		public async Task SelectPicture()
-		{
-			Setup ();
-
-			ImageSource = null;
-
-			try
-			{
-				var mediaFile = await _Mediapicker.SelectPhotoAsync(new CameraMediaStorageOptions
-					{
-						DefaultCamera = CameraDevice.Rear,
-						MaxPixelDimension = 400
-					});
-				ImageSource = ImageSource.FromStream(() => mediaFile.Source);
-			}
-			catch (System.Exception ex)
-			{
-				Status = ex.Message;
-			}
-		}
-
-		private static double ConvertBytesToMegabytes(long bytes)
-		{
-			double rtn_value = (bytes / 1024f) / 1024f;
-
-			return rtn_value;
 		}
 	}
 }

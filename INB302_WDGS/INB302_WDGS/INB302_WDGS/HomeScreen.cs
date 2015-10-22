@@ -15,11 +15,6 @@ namespace INB302_WDGS
             //NavigationPage.SetTitleIcon(this, "logo.png");
             NavigationPage.SetHasNavigationBar(this, false);
 
-            Image backgroundImage = new Image()
-            {
-                Source = "background.png",
-            };
-
 			Label skipLbl = new Label
 			{
 				Text = "Go to Activity questions",
@@ -51,6 +46,7 @@ namespace INB302_WDGS
 
 		private void goToQuestionsScreen()
 		{
+            App.currentActivity = "1";
             App.Current.MainPage = new QuestionsScreen();
 		}
     }

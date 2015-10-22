@@ -16,6 +16,8 @@ namespace INB302_WDGS
             Image logoImage = new Image()
             {
                 Source = "logo.png",
+                HeightRequest = App.screenHeight / 2.5,
+                WidthRequest = App.screenWidth / 1.8
             };
 
             //Loading indicator native for each platform

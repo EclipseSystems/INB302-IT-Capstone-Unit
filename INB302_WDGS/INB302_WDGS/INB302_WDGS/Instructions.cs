@@ -57,9 +57,9 @@ namespace INB302_WDGS
                 ColumnDefinitions = 
                 {
                     new ColumnDefinition {Width = 0},
-                    new ColumnDefinition {Width = App.screenWidth / 4 - 20},
-                    new ColumnDefinition {Width = App.screenWidth / 4 - 20},
-                    new ColumnDefinition {Width = App.screenWidth / 4 - 20},
+                    new ColumnDefinition {Width = App.screenWidth / 4},
+                    new ColumnDefinition {Width = App.screenWidth / 4},
+                    new ColumnDefinition {Width = App.screenWidth / 4 - 28},
                     new ColumnDefinition {Width = App.screenWidth / 4},
                     new ColumnDefinition {Width = 0}
                 }
