@@ -41,13 +41,8 @@
     <Compile Include="LoadingScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionsScreen.cs" />
-    <Compile Include="TwitterScreen.cs" />
-<<<<<<< HEAD
     <Compile Include="ViewModels\CameraClass.cs" />
-=======
-    <Compile Include="ViewModels\CameraViewModel.cs" />
     <Compile Include="MapScreen.cs" />
->>>>>>> refs/remotes/origin/master
     <Compile Include="YouTubeScreen.cs" />
   </ItemGroup>
   <ItemGroup>
