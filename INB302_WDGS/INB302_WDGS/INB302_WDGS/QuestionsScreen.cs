@@ -10,14 +10,29 @@ using XPA_PickMedia_XLabs_XFP;
 
 namespace INB302_WDGS
 {
+    /*
+     * A public class extending the editor Xamarin.Forms element
+     */ 
     public class MyEditor : Editor
     {
-        public MyEditor()
-            : base()
-        {
+        /*
+         * Class constructer
+         * 
+         * Instantiates an Editor object using
+         * the parent constructor
+         */ 
+        public MyEditor() : base() { }
 
-        }
-
+        /*
+         * Invalidates the Editor
+         * 
+         * When text is entered into the editor box
+         * it does not increase the size of the editor
+         * element. With this function being called
+         * the editor "invalidates" its size and
+         * resizes itself to match the length of
+         * the text
+         */ 
         public void InvalidateLayout()
         {
             this.InvalidateMeasure();
@@ -26,14 +41,21 @@ namespace INB302_WDGS
 
     public class QuestionsScreen : ContentPage
     {
-        String currentFile = "activity" + App.currentActivity + "Questions.txt";
+        private String currentFile = "activity" + App.currentActivity + "Questions.txt";
         private MyEditor questions;
-        CameraViewModel cameraOps = null;
+        private Camera cameraOps = null;
 
         public QuestionsScreen()
         {
-            cameraOps = new CameraViewModel();
+            //instantiates the camera class for use
+            //to take images
+            cameraOps = new Camera();
 
+            //creating layouts to store each of the images within the grid
+            //without this the background of the grid is white when we want
+            //it to be black
+            #region imageIconLayouts
+ 
             StackLayout logoLayout = new StackLayout
             {
                 BackgroundColor = Color.Black,
@@ -74,6 +96,14 @@ namespace INB302_WDGS
                 Padding = new Thickness(0, 2, 0, 0)
             };
 
+            #endregion
+
+
+            //creating each of the image icons for
+            //the grid with their tap commands to load
+            //correct file
+            #region imageIcons
+
             Image logo = new Image
             {
                 Source = "QutLogoWhite.png",
@@ -111,26 +141,55 @@ namespace INB302_WDGS
                 WidthRequest = 30
             };
 
+            questionIcon.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() => loadText(questions, "activity" + App.currentActivity + "Questions.txt"))
+            });
+
+            triviaIcon.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() => loadText(questions, "activity" + App.currentActivity + "Trivia.txt"))
+            });
+
+            taskIcon.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() => loadText(questions, "activity" + App.currentActivity + "Tasks.txt")),
+            });
+
+            cameraIcon.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() => takePicture()),
+            });
+
+            #endregion
+
+            //adding each of the image icons to the relevant layout
             questionIconLayout.Children.Add(questionIcon);
             triviaIconLayout.Children.Add(triviaIcon);
             taskIconLayout.Children.Add(taskIcon);
             cameraIconLayout.Children.Add(cameraIcon);
             logoLayout.Children.Add(logo);
 
+            //creating a new 5x8 grid
             Grid pageGrid = new Grid
             {
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 BackgroundColor = Color.White,
                 Opacity = 0.8,
+                //row and column spacing creates a "bordered"
+                //effect around each element
                 RowSpacing = 2,
                 ColumnSpacing = 2,
                 IsClippedToBounds = true,
                 Padding = new Thickness(.5, 1, .5, 0),
+                //all row heights, and column widths are relative to
+                //the devices screen size/resolution so they should
+                //be an appropriate size on each type of device
                 RowDefinitions = {
                     new RowDefinition {Height = 0},
                     new RowDefinition {Height = App.screenHeight / 12},
-                    new RowDefinition {Height = App.screenHeight - 140},
+                    new RowDefinition {Height = App.screenHeight / 1.35},
                     new RowDefinition {Height = App.screenHeight / 12},
                     new RowDefinition {Height = 0}
                 },
@@ -147,6 +206,9 @@ namespace INB302_WDGS
                 }
             };
 
+            //stacklayout to host the questions editor, and scrollview
+            //this is necessary because without it the scrollview
+            //will override the grid layout and flow out of the grid
             StackLayout questionContent = new StackLayout
             {
                 Padding = new Thickness(5, 0, 2, 0),
@@ -163,12 +225,13 @@ namespace INB302_WDGS
             //try load from file
             loadText(questions, currentFile);
 
-            //when questions unfocused save
+            //when questions editor is unfocused save
             questions.Unfocused += (sender, e) =>
             {
                 saveText(questions, currentFile);
             };
 
+            //scrollview for the question editor
             ScrollView questionText = new ScrollView
             {
                 IsClippedToBounds = true,
@@ -190,49 +253,7 @@ namespace INB302_WDGS
             backLbl.GestureRecognizers.Add(new TapGestureRecognizer
             {
                 Command = new Command(() => goBack())
-            });
-
-            Label questLbl = new Label
-            {
-                Text = "Questions",
-                BackgroundColor = Color.Black,
-                TextColor = Color.White,
-                XAlign = TextAlignment.Center,
-                YAlign = TextAlignment.Center
-            };
-
-            questionIcon.GestureRecognizers.Add(new TapGestureRecognizer
-            {
-                Command = new Command(() => loadText(questions, "activity" + App.currentActivity + "Questions.txt"))
-            });
-
-            Label triviaLbl = new Label
-            {
-                Text = "Trivia",
-                BackgroundColor = Color.Black,
-                TextColor = Color.White,
-                XAlign = TextAlignment.Center,
-                YAlign = TextAlignment.Center
-            };
-
-            triviaIcon.GestureRecognizers.Add(new TapGestureRecognizer
-            {
-                Command = new Command(() => loadText(questions, "activity" + App.currentActivity + "Trivia.txt"))
-            });
-
-            Label taskLbl = new Label
-            {
-                Text = "Tasks",
-                BackgroundColor = Color.Black,
-                TextColor = Color.White,
-                XAlign = TextAlignment.Center,
-                YAlign = TextAlignment.Center
-            };
-
-            taskIcon.GestureRecognizers.Add(new TapGestureRecognizer
-            {
-                Command = new Command(() => loadText(questions, "activity" + App.currentActivity + "Tasks.txt")),
-            });
+            }); 
 
             Label nextLbl = new Label
             {
@@ -247,21 +268,7 @@ namespace INB302_WDGS
             nextLbl.GestureRecognizers.Add(new TapGestureRecognizer
             {
                 Command = new Command(() => goToNextActivity()),
-            });
-
-            Label cameraLbl = new Label
-            {
-                Text = "camera",
-                BackgroundColor = Color.Black,
-                TextColor = Color.White,
-                XAlign = TextAlignment.Center,
-                YAlign = TextAlignment.Center
-            };
-
-            cameraIcon.GestureRecognizers.Add(new TapGestureRecognizer
-            {
-                Command = new Command(() => takePicture()),
-            });
+            }); 
 
             pageGrid.Children.Add(backLbl, 1, 1); //back button
 
@@ -279,18 +286,24 @@ namespace INB302_WDGS
 
             pageGrid.Children.Add(nextLbl, 6, 3); //next activity button
 
-            RelativeLayout content = new RelativeLayout();
             StackLayout innerContent = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Center
+                VerticalOptions = LayoutOptions.Center,
             };
 
             innerContent.Children.Add(pageGrid);
 
             this.Content = innerContent;
-            this.Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
+
+            //add padding to account for the iOS status bar
+            this.Padding = new Thickness(0, Device.OnPlatform(60, 0, 0), 0, 0);
             this.BackgroundImage = "background.png";
+
+            questionContent.Unfocused += (s, e) =>
+            {
+                reformatEditorHeight();
+            };
 
             if (Device.OS == TargetPlatform.iOS)
             {
@@ -303,10 +316,10 @@ namespace INB302_WDGS
                 questions.Unfocused += (s, e) =>
                 {
                     questionText.ScrollToAsync(0, 0, false);
-                    reformatEditorHeight();
                 };
             }
         }
+
         private void goToNextActivity()
         {
             App.Current.MainPage = new HomeScreen();
@@ -460,13 +473,20 @@ namespace INB302_WDGS
             }
         }
 
+        /*
+         * Take a picture using the dependency service
+         */
         private async void takePicture()
         {
-            if (App.cameraAccessGranted) { 
+            if (App.cameraAccessGranted) {
+                //using the camera dependency service to take a picture
                 var mediaFile = await cameraOps.TakePicture();
 
+                //if image failed for any reason
                 if (mediaFile == null)
                 {
+                    //check if image failed because user cancelled it,
+                    //or an error occured when capturing
                     if (cameraOps.Status != "Canceled")
                     {
                         await DisplayAlert("Error", "There was an error taking your picture, please try again", "OK");
@@ -480,10 +500,15 @@ namespace INB302_WDGS
                         mediaFile.Source.CopyTo(memoryStream);
 
                         //saving the image to the devices gallery
-                        DependencyService.Get<ISaveAndLoad>().saveImageToGallery("image", memoryStream.ToArray());
-                    }
-
-                    await DisplayAlert("Image", "The image has been saved to your gallery", "OK");
+                        if (DependencyService.Get<ISaveAndLoad>().saveImageToGallery("image", memoryStream.ToArray()) == "error")
+                        {
+                            await DisplayAlert("Image", "Your photo failed to save, please take it and try again", "OK");
+                        }
+                        else
+                        {
+                            await DisplayAlert("Image", "The image has been saved to your gallery", "OK");
+                        }
+                    } 
                 }
             }
             else

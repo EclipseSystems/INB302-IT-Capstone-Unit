@@ -10,6 +10,15 @@ using Xamarin.Forms.Platform.iOS;
 
 namespace INB302_WDGS.iOS
 {
+    /*
+     * Custom Renderer for iOS Devices for the Editor Xamarin.Forms element
+     * This Renderer is used to change the text colour of all Editor elements
+     * on iOS devices to match the appearance of the Android platform
+     * 
+     * The iOS text colour is default black when on an Editor element,
+     * so without this the text colour is black and not visible with a
+     * black background.
+     */
     public class CustomEditorRenderer : EditorRenderer
     {
         protected override void OnElementChanged(ElementChangedEventArgs<Editor> e)

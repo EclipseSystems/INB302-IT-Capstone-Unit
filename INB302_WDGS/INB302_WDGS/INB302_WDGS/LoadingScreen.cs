@@ -43,13 +43,10 @@ namespace INB302_WDGS
             AbsoluteLayout.SetLayoutFlags(loadActivity, AbsoluteLayoutFlags.PositionProportional);
             AbsoluteLayout.SetLayoutBounds(loadActivity, new Rectangle(0.5, 0.8, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
 
-            //make the relative layout the pages content
             this.Content = innerContent;
 
             //account for iOS status bar
             this.Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
-
-            //load the background image
             this.BackgroundImage = "background.png";
 
             //load the instructions page
@@ -61,8 +58,6 @@ namespace INB302_WDGS
         {
             //delay the load to create a loading experience
             await Task.Delay(3000);
-
-            //load the page
             App.Current.MainPage = new Instructions();
         }
     }
