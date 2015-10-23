@@ -42,7 +42,6 @@ namespace INB302_WDGS
     public class QuestionsScreen : ContentPage
     {
         private String currentFile = "activity" + App.currentActivity + "Questions.txt";
-        private MyEditor questions;
         private Camera cameraOps = null;
 
         public QuestionsScreen()
@@ -215,7 +214,7 @@ namespace INB302_WDGS
                 BackgroundColor = Color.Black
             };
 
-            questions = new MyEditor
+            MyEditor questions = new MyEditor
             {
                 Text = "",
                 Keyboard = Keyboard.Default,
@@ -270,6 +269,8 @@ namespace INB302_WDGS
                 Command = new Command(() => goToNextActivity()),
             }); 
 
+
+            //adding each element to the grid
             pageGrid.Children.Add(backLbl, 1, 1); //back button
 
             pageGrid.Children.Add(logoLayout, 2, 7, 1, 2); //qut logo
@@ -286,6 +287,7 @@ namespace INB302_WDGS
 
             pageGrid.Children.Add(nextLbl, 6, 3); //next activity button
 
+            //creating a stacklayout and adding the grid to it
             StackLayout innerContent = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.Center,
@@ -294,17 +296,26 @@ namespace INB302_WDGS
 
             innerContent.Children.Add(pageGrid);
 
+            //making the pages content the stacklayout with the grid
             this.Content = innerContent;
 
             //add padding to account for the iOS status bar
             this.Padding = new Thickness(0, Device.OnPlatform(60, 0, 0), 0, 0);
             this.BackgroundImage = "background.png";
 
-            questionContent.Unfocused += (s, e) =>
+            //when the editor with the questions is unfocused
+            //invalidate it so that it reformats the height
+            questions.TextChanged += (s, e) =>
             {
-                reformatEditorHeight();
+                reformatEditorHeight(questions);
             };
 
+            //on iOS when you click the text in the editor, it doesn't
+            //automatically scroll the editor down to where the text is
+            //with this added functionality when the question editor is
+            //focused it should scroll to the position the user clicked
+            //and when unfocused scroll back to the beginning of the
+            //editor element.
             if (Device.OS == TargetPlatform.iOS)
             {
                 questions.Focused += (s, e) =>
@@ -320,21 +331,47 @@ namespace INB302_WDGS
             }
         }
 
+        /* 
+         * simple function to move to the next activity
+         * when the next button is clicked
+         */
         private void goToNextActivity()
         {
             App.Current.MainPage = new HomeScreen();
         }
+
+        /* simple function to go back to the activity
+         * home screen when back button is clicked
+         */ 
         private void goBack()
         {
             App.Current.MainPage = new HomeScreen();
         }
 
-        private void reformatEditorHeight()
+        /* 
+         * function to reformat the question editors
+         * height when text is entered that would
+         * exceed the current editor height
+         * i.e. makes the editor height grow dynamically
+         */ 
+        private void reformatEditorHeight(MyEditor questionElement)
         {
-            questions.InvalidateLayout();
+            questionElement.InvalidateLayout();
         }
 
-        private String getFileText(String fileName)
+        /*
+         * gets the initial text for each question/trivia/task
+         * of each activity. This is used for the first time the
+         * application is loaded, and before any text files are
+         * saved.
+         * 
+         * Params:
+         * String fileName: which file text to grab
+         * 
+         * Returns:
+         * the text for the question/trivia/task of the file
+         */ 
+        private String getBaseFileText(String fileName)
         {
             if (App.currentActivity == "1") 
             {
@@ -441,12 +478,26 @@ namespace INB302_WDGS
                    "below or clicking back and reloading the page";
         }
 
+        /*
+         * when the questions screen loads, or when the user
+         * clicks to change from the questions to trivia or tasks,
+         * or vice versa. This function loads the text for the current
+         * activity for the question, trivia, or task in the activity.
+         * 
+         * Params:
+         * Editor questionElement: the editor element that needs the text changed
+         * String fileName: the file name to load the text from
+         * 
+         * Returns:
+         * none
+         */ 
         private void loadText(Editor questionElement, String fileName)
         {
-            /*  save the text from the previous question set before it swaps
-                this is only here because editor.unfocused() does not call
-                at all if the user clicks one of the question buttons
-            */
+            /*  
+             * save the text from the previous question set before it swaps
+             * this is only here because editor.unfocused() does not call
+             * at all if the user clicks one of the question buttons
+             */
             if (questionElement.Text != "")
             {
                 saveText(questionElement, currentFile);
@@ -461,25 +512,30 @@ namespace INB302_WDGS
             }
             catch
             {
-                questionElement.Text = getFileText(fileName);
-            }
-        }
-
-        private void saveText(Editor questionElement, String fileName)
-        {
-            if (fileName != "null")
-            {
-                DependencyService.Get<ISaveAndLoad>().SaveText(fileName, questionElement.Text);
+                questionElement.Text = getBaseFileText(fileName);
             }
         }
 
         /*
-         * Take a picture using the dependency service
+         * saves the text from the editor element into the filename
+         * provided so that it can reloaded for later use
+         * 
+         * Params:
+         * Editor questionElement: the editor element to get text from
+         * String fileName: the file name used to save the text to
+         */ 
+        private void saveText(Editor questionElement, String fileName)
+        {
+            DependencyService.Get<ISaveAndLoad>().SaveText(fileName, questionElement.Text);
+        }
+
+        /*
+         * Take a picture using the Xamarin.Forms.XLabs camera class
          */
         private async void takePicture()
         {
             if (App.cameraAccessGranted) {
-                //using the camera dependency service to take a picture
+                //call the take picture function from the XLabs camera class
                 var mediaFile = await cameraOps.TakePicture();
 
                 //if image failed for any reason
