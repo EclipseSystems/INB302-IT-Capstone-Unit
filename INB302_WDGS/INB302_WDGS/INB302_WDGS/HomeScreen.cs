@@ -12,9 +12,11 @@ namespace INB302_WDGS
     {
         public HomeScreen()
         {
-            //NavigationPage.SetTitleIcon(this, "logo.png");
-            NavigationPage.SetHasNavigationBar(this, false);
-
+            /*
+             * This isn't the actual home screen
+             * it's just a placeholder for until
+             * the real screen is developed
+             */ 
 			Label skipLbl = new Label
 			{
 				Text = "Go to Activity questions",
