@@ -50,7 +50,7 @@ namespace INB302_WDGS
                 RowDefinitions = {
                     new RowDefinition {Height = 0},
                     new RowDefinition {Height = App.screenHeight / 12},
-                    new RowDefinition {Height = App.screenHeight - 140},
+                    new RowDefinition {Height = App.screenHeight / 1.35},
                     new RowDefinition {Height = App.screenHeight / 12},
                     new RowDefinition {Height = 0}
                 },

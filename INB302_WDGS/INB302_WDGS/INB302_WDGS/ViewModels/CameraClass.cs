@@ -23,7 +23,7 @@ using XLabs.Platform.Services.Media;
 
 namespace XPA_PickMedia_XLabs_XFP
 {
-	public class CameraViewModel : ViewModel
+	public class Camera : ViewModel
 	{
 		private readonly TaskScheduler _scheduler = TaskScheduler.FromCurrentSynchronizationContext();
 		private IMediaPicker _Mediapicker;
@@ -31,7 +31,7 @@ namespace XPA_PickMedia_XLabs_XFP
 		private Command _TakePictureCommand;
 		private string _Status;
 
-		public CameraViewModel ()
+		public Camera ()
 		{
 			Setup ();
 		}
@@ -58,6 +58,7 @@ namespace XPA_PickMedia_XLabs_XFP
 
 		private void Setup()
 		{
+            //
 			if (_Mediapicker == null) {
                 var device = Resolver.Resolve<IDevice>();
                 _Mediapicker = DependencyService.Get<IMediaPicker>() ?? device.MediaPicker;

@@ -15,12 +15,16 @@ namespace INB302_WDGS.Droid {
     [Activity(Label = "INB302_WDGS", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity {
         protected override void OnCreate(Bundle bundle) {
+            //initialising shared project variables
             App.screenWidth = (int)(Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density);
             App.screenHeight = (int)(Resources.DisplayMetrics.HeightPixels / Resources.DisplayMetrics.Density);
             App.cameraAccessGranted = true;
 
             base.OnCreate(bundle);
 
+            //initialising the resolver for the devices camera
+            //used in the CameraViewModel class for cross-platform
+            //camera functionality
             #region Resolver Init
             SimpleContainer container = new SimpleContainer();
             container.Register<IDevice>(t => AndroidDevice.CurrentDevice);

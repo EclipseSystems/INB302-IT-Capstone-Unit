@@ -23,10 +23,14 @@ namespace INB302_WDGS.iOS {
         // You have 17 seconds to return from this method, or iOS will terminate your application.
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options) {
+            //initialising shared project variables
             App.screenWidth = (int)UIScreen.MainScreen.Bounds.Width;
             App.screenHeight = (int)UIScreen.MainScreen.Bounds.Height;
             App.cameraAccessGranted = true;
 
+            //initialising the resolver for the devices camera
+            //used in the CameraViewModel class for cross-platform
+            //camera functionality
             #region Resolver Init
             SimpleContainer container = new SimpleContainer();
             container.Register<IDevice>(t => AppleDevice.CurrentDevice);
