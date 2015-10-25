@@ -79,6 +79,48 @@ namespace INB302_WDGS
                 Label = "Old Government House",
                 Address = "2 George Street, Brisbane, QLD 4000"
             };
+            
+            var pin = new Pin {
+            	Type = PinType.Place,
+            	Position = new Position (-27.4754214, 153.0249879),
+            	Label = "Parliament House",
+            	Address = "George St, Brisbane QLD 4000"
+            };
+            
+            var pin = new Pin {
+            	Type = PinType.Place,
+            	Position = new Position (-27.4727061,153.0242916),
+            	Label = "Executive Building",
+            	Address = "130 William Street, Brisbane QLD 4000"
+            };
+            
+            var pin = new Pin {
+            	Type = PinType.Place,
+            	Position = new Position (-27.4693386, 153.0186364),
+            	Label = "Inns of Court",
+            	Address = "107 North Quay, Brisbane QLD 4000"
+            };
+            
+            var pin = new Pin {
+            	Type = PinType.Place,
+            	Position = new Position (-27.468916, 153.0192682),
+            	Label = "Commonwealth Law Courts",
+            	Address = "119 North Quay, Brisbane QLD 4000"
+            };
+            
+            var pin = new Pin {
+            	Type = PinType.Place,
+            	Position = new Position (-27.468916, 153.0192682),
+            	Label = "Magistrates' Court",
+            	Address = "363 George Street, Brisbane QLD 4000"
+            };
+
+            var pin = new Pin {
+            	Type = PinType.Place,
+            	Position = new Position (-27.4674193, 153.0192154),
+            	Label = "QEII Courts Complex",
+            	Address = "415 George St, Brisbane QLD 4000"
+            };            
             map.Pins.Add (pin);
 
             var slider = new Slider (1, 18, 1);
