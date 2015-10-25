@@ -72,20 +72,31 @@ namespace INB302_WDGS
                 HorizontalOptions = LayoutOptions.StartAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand
             };
+            
+            getlocation.Clicked += async (sender, e) => {
+                var loc = CrossGeolocator.Current;
 
+                loc.DesiredAccuracy = 100;
+
+                var pos = await loc.GetPositionAsync (timeoutMilliseconds: 10000);
+
+                map.MoveToRegion (MapSpan.FromCenterAndRadius (
+                    new Position (pos), Distance.FromKilometers (0.5)));
+            };
+            
             var pin = new Pin {
                 Type = PinType.Place,
                 Position = new Position (-27.4773531, 153.0289662),
                 Label = "Old Government House",
                 Address = "2 George Street, Brisbane, QLD 4000"
-            };
+            });
             
             var pin = new Pin {
             	Type = PinType.Place,
             	Position = new Position (-27.4754214, 153.0249879),
             	Label = "Parliament House",
             	Address = "George St, Brisbane QLD 4000"
-            };
+            });
             
             var pin = new Pin {
             	Type = PinType.Place,
@@ -132,19 +143,7 @@ namespace INB302_WDGS
                     map.MoveToRegion (new MapSpan (map.VisibleRegion.Center, latlongdegrees, latlongdegrees));
             };
 
-            getlocation.Clicked += async (sender, e) => {
-                var loc = CrossGeolocator.Current;
-
-                loc.DesiredAccuracy = 100;
-
-                var pos = await loc.GetPositionAsync (timeoutMilliseconds: 10000);
-
-                map.MoveToRegion (MapSpan.FromCenterAndRadius (
-                    new Position (pos), Distance.FromKilometers (0.5)));
-            };
-
             mapContent.Children.Add (map);
-            mapContent.Children.Add (pin);
 			mapContent.Children.Add (getlocation);
             mapContent.Children.Add (slider);
             //End map content
