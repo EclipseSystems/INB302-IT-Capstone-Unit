@@ -82,21 +82,17 @@ namespace INB302_WDGS
 				WidthRequest = 30
 			};
 
-//			homeIcon.GestureRecognizers.Add (new TapGestureRecognizer {
-//				Command = new Command (() => goToHomePage ()),
-//			});
-//
-//			mapIcon.GestureRecognizers.Add (new TapGestureRecognizer {
-//				Command = new Command (() => goToMapPage ()),
-//			});
-//
-//			questionIcon.GestureRecognizers.Add (new TapGestureRecognizer {
-//				Command = new Command (() => loadText (questions, "activity" + App.currentActivity + "Questions.txt"))
-//			});
-//
-//			triviaIcon.GestureRecognizers.Add (new TapGestureRecognizer {
-//				Command = new Command (() => loadText (questions, "activity" + App.currentActivity + "Trivia.txt"))
-//			});
+			homeIcon.GestureRecognizers.Add (new TapGestureRecognizer {
+				Command = new Command (() => goToHomePage ()),
+			});
+
+			mapIcon.GestureRecognizers.Add (new TapGestureRecognizer {
+				Command = new Command (() => goToMapPage ()),
+			});
+
+			questionIcon.GestureRecognizers.Add (new TapGestureRecognizer {
+				Command = new Command (() => goToQuestionPage ()),
+			});
 
 			homeIconLayout.Children.Add (homeIcon);
 			mapIconLayout.Children.Add (mapIcon);
@@ -271,13 +267,13 @@ namespace INB302_WDGS
 			this.Padding = new Thickness (0, Device.OnPlatform (20, 0, 0), 0, 0);
 			this.BackgroundImage = "background.png";
 		}
-
-		private void goToNextActivity ()
+		
+		private void goBack ()
 		{
 			App.Current.MainPage = new HomeScreen ();
 		}
-
-		private void goBack ()
+		
+		private void goToNextActivity ()
 		{
 			App.Current.MainPage = new HomeScreen ();
 		}
@@ -290,6 +286,12 @@ namespace INB302_WDGS
 		private void goToMapPage()
 		{
 			App.Current.MainPage = new MapScreen ();
+		}
+		
+		private void goToQuestionPage()
+		{
+			App.currentActivity = "1";
+			App.Current.MainPage = new QuestionsScreen();
 		}
 	}
 }
