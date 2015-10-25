@@ -47,13 +47,29 @@ namespace INB302_WDGS
                 Command = new Command(() => goToQuestionsScreen2()),
             });
 
+            Label skip3Lbl = new Label
+            {
+                Text = "Go to Activity questions",
+                BackgroundColor = Color.Black,
+                TextColor = Color.White,
+                FontSize = 20,
+                XAlign = TextAlignment.Center,
+                YAlign = TextAlignment.Center
+            };
+
+            skip3Lbl.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() => goToMaps()),
+            });
+
             StackLayout innerContent = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Center,
                 Children = {
                     skipLbl,
-                    skip2Lbl
+                    skip2Lbl,
+                    skip3Lbl
                 }
             };
 
@@ -72,6 +88,11 @@ namespace INB302_WDGS
         {
             App.currentActivity = "2";
             App.Current.MainPage = new QuestionsScreen();
+        }
+
+        private void goToMaps()
+        {
+            App.Current.MainPage = new MapScreen();
         }
     }
 }
