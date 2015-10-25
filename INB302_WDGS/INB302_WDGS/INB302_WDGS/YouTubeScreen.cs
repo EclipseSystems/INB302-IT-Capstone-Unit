@@ -82,6 +82,22 @@ namespace INB302_WDGS
 				WidthRequest = 30
 			};
 
+//			homeIcon.GestureRecognizers.Add (new TapGestureRecognizer {
+//				Command = new Command (() => goToHomePage ()),
+//			});
+//
+//			mapIcon.GestureRecognizers.Add (new TapGestureRecognizer {
+//				Command = new Command (() => goToMapPage ()),
+//			});
+//
+//			questionIcon.GestureRecognizers.Add (new TapGestureRecognizer {
+//				Command = new Command (() => loadText (questions, "activity" + App.currentActivity + "Questions.txt"))
+//			});
+//
+//			triviaIcon.GestureRecognizers.Add (new TapGestureRecognizer {
+//				Command = new Command (() => loadText (questions, "activity" + App.currentActivity + "Trivia.txt"))
+//			});
+
 			homeIconLayout.Children.Add (homeIcon);
 			mapIconLayout.Children.Add (mapIcon);
 			triviaIconLayout.Children.Add (triviaIcon);
@@ -264,6 +280,16 @@ namespace INB302_WDGS
 		private void goBack ()
 		{
 			App.Current.MainPage = new HomeScreen ();
+		}
+
+		private void goToHomePage ()
+		{
+			App.Current.MainPage = new HomeScreen ();
+		}
+
+		private void goToMapPage()
+		{
+			App.Current.MainPage = new MapScreen ();
 		}
 	}
 }
