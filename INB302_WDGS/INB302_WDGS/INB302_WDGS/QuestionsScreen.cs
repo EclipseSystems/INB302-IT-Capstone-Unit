@@ -97,6 +97,39 @@ namespace INB302_WDGS
 
             #endregion
 
+            //stacklayout to host the questions editor, and scrollview
+            //this is necessary because without it the scrollview
+            //will override the grid layout and flow out of the grid
+            StackLayout questionContent = new StackLayout
+            {
+                Padding = new Thickness(5, 0, 2, 0),
+                BackgroundColor = Color.Black
+            };
+
+            MyEditor questions = new MyEditor
+            {
+                Text = "",
+                Keyboard = Keyboard.Default,
+                BackgroundColor = Color.Black,
+            };
+
+            //try load from file
+            loadText(questions, currentFile);
+
+            //when questions editor is unfocused save
+            questions.Unfocused += (sender, e) =>
+            {
+                saveText(questions, currentFile);
+            };
+
+            //scrollview for the question editor
+            ScrollView questionText = new ScrollView
+            {
+                IsClippedToBounds = true,
+                Content = questions
+            };
+
+            questionContent.Children.Add(questionText);
 
             //creating each of the image icons for
             //the grid with their tap commands to load
@@ -204,40 +237,6 @@ namespace INB302_WDGS
                     new ColumnDefinition {Width = 0}
                 }
             };
-
-            //stacklayout to host the questions editor, and scrollview
-            //this is necessary because without it the scrollview
-            //will override the grid layout and flow out of the grid
-            StackLayout questionContent = new StackLayout
-            {
-                Padding = new Thickness(5, 0, 2, 0),
-                BackgroundColor = Color.Black
-            };
-
-            MyEditor questions = new MyEditor
-            {
-                Text = "",
-                Keyboard = Keyboard.Default,
-                BackgroundColor = Color.Black,
-            };
-
-            //try load from file
-            loadText(questions, currentFile);
-
-            //when questions editor is unfocused save
-            questions.Unfocused += (sender, e) =>
-            {
-                saveText(questions, currentFile);
-            };
-
-            //scrollview for the question editor
-            ScrollView questionText = new ScrollView
-            {
-                IsClippedToBounds = true,
-                Content = questions
-            };
-
-            questionContent.Children.Add(questionText);
 
             Label backLbl = new Label
             {

@@ -66,18 +66,18 @@ namespace INB302_WDGS
                 }
             };
 
+            Label instructionLbl = new Label
+            {
+                Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sollicitudin eget est volutpat varius. Aenean lorem urna, lacinia nec mollis ut, scelerisque quis odio. Integer maximus, ligula at aliquet vehicula, tortor erat aliquet neque, a venenatis nisl dui eu lorem. Fusce pulvinar felis sed orci commodo consectetur. Pellentesque a tempor nulla. Pellentesque fermentum elit et erat elementum, vitae tempus nisi molestie. Maecenas nisl odio, accumsan quis ligula eu, tincidunt ultrices orci. Quisque porttitor bibendum dui, blandit aliquam sem gravida id. Proin ut sem lorem. Etiam eu dapibus libero, vitae eleifend eros. Fusce vulputate nunc sem, ut rutrum mi convallis vel. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam eu eleifend turpis. Proin eget neque orci. Sed rhoncus lectus in sapien congue ultricies. Nulla odio erat, condimentum nec faucibus eget, volutpat quis quam. Morbi convallis luctus erat, sed ultrices ipsum elementum ut. Quisque accumsan quam in ligula varius, a ultricies diam dignissim. Fusce lobortis, risus vitae pellentesque semper, ligula nulla iaculis purus, at pharetra nisi ex in nunc. Duis vel mattis nisi. Vestibulum sagittis ac nibh sit amet vehicula. Vestibulum eleifend semper nisl sit amet vehicula. Sed sit amet lacinia est. Nulla in ex maximus, pharetra tortor suscipit, semper felis. Donec maximus quam turpis, eget facilisis ante interdum et. In et laoreet lacus. Donec bibendum sed metus pretium pretium. Duis at pretium nisi, non molestie dui. Morbi nec diam quis magna commodo vehicula vitae eget purus.",
+                TextColor = Color.Gray,
+                BackgroundColor = Color.Black,
+            };
+
             ScrollView instructions = new ScrollView
             {
                 IsClippedToBounds = true,
                 Content = instructionLbl
             };
-
-			Label instructionLbl = new Label
-			{
-				Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sollicitudin eget est volutpat varius. Aenean lorem urna, lacinia nec mollis ut, scelerisque quis odio. Integer maximus, ligula at aliquet vehicula, tortor erat aliquet neque, a venenatis nisl dui eu lorem. Fusce pulvinar felis sed orci commodo consectetur. Pellentesque a tempor nulla. Pellentesque fermentum elit et erat elementum, vitae tempus nisi molestie. Maecenas nisl odio, accumsan quis ligula eu, tincidunt ultrices orci. Quisque porttitor bibendum dui, blandit aliquam sem gravida id. Proin ut sem lorem. Etiam eu dapibus libero, vitae eleifend eros. Fusce vulputate nunc sem, ut rutrum mi convallis vel. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam eu eleifend turpis. Proin eget neque orci. Sed rhoncus lectus in sapien congue ultricies. Nulla odio erat, condimentum nec faucibus eget, volutpat quis quam. Morbi convallis luctus erat, sed ultrices ipsum elementum ut. Quisque accumsan quam in ligula varius, a ultricies diam dignissim. Fusce lobortis, risus vitae pellentesque semper, ligula nulla iaculis purus, at pharetra nisi ex in nunc. Duis vel mattis nisi. Vestibulum sagittis ac nibh sit amet vehicula. Vestibulum eleifend semper nisl sit amet vehicula. Sed sit amet lacinia est. Nulla in ex maximus, pharetra tortor suscipit, semper felis. Donec maximus quam turpis, eget facilisis ante interdum et. In et laoreet lacus. Donec bibendum sed metus pretium pretium. Duis at pretium nisi, non molestie dui. Morbi nec diam quis magna commodo vehicula vitae eget purus.",
-				TextColor = Color.Gray,
-				BackgroundColor = Color.Black,
-			};
 
             Label skipLbl = new Label
             {

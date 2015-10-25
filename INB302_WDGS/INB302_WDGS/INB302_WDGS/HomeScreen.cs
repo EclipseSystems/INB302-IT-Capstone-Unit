@@ -49,7 +49,8 @@ namespace INB302_WDGS
 
             Label skip3Lbl = new Label
             {
-                Text = "Go to Activity questions",
+                Text = "this leads to youtube screen," +
+                       "but it doesn't run and closes the app",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
                 FontSize = 20,
@@ -92,7 +93,7 @@ namespace INB302_WDGS
 
         private void goToMaps()
         {
-            App.Current.MainPage = new MapScreen();
+            App.Current.MainPage = new YouTubeScreen();
         }
     }
 }
