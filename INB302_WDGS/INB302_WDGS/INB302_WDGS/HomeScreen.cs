@@ -49,8 +49,7 @@ namespace INB302_WDGS
 
             Label skip3Lbl = new Label
             {
-                Text = "this leads to youtube screen," +
-                       "but it doesn't run and closes the app",
+                Text = "this leads to youtube screen",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
                 FontSize = 20,
@@ -59,6 +58,21 @@ namespace INB302_WDGS
             };
 
             skip3Lbl.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() => goToYouTube()),
+            });
+
+            Label skip4Lbl = new Label
+            {
+                Text = "this leads to maps",
+                BackgroundColor = Color.Black,
+                TextColor = Color.White,
+                FontSize = 20,
+                XAlign = TextAlignment.Center,
+                YAlign = TextAlignment.Center
+            };
+
+            skip4Lbl.GestureRecognizers.Add(new TapGestureRecognizer
             {
                 Command = new Command(() => goToMaps()),
             });
@@ -70,7 +84,8 @@ namespace INB302_WDGS
                 Children = {
                     skipLbl,
                     skip2Lbl,
-                    skip3Lbl
+                    skip3Lbl,
+                    skip4Lbl
                 }
             };
 
@@ -91,9 +106,14 @@ namespace INB302_WDGS
             App.Current.MainPage = new QuestionsScreen();
         }
 
-        private void goToMaps()
+        private void goToYouTube()
         {
             App.Current.MainPage = new YouTubeScreen();
+        }
+
+        private void goToMaps()
+        {
+            App.Current.MainPage = new MapScreen();
         }
     }
 }
