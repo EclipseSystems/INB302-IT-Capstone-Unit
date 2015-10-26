@@ -131,11 +131,6 @@ namespace INB302_WDGS
 			};
 
 			//YouTube player section
-			StackLayout videoContent = new StackLayout {
-				Padding = new Thickness (5, 0, 2, 0),
-				BackgroundColor = Color.Black,
-			};
-
 			var browser = new WebView ();
 			var htmlSource = new HtmlWebViewSource ();
 			htmlSource.Html = @"<html>
@@ -188,7 +183,13 @@ namespace INB302_WDGS
 			browser.Source = htmlSource;
 			Content = browser;
 
-			videoContent.Children.Add (browser);
+			StackLayout videoContent = new StackLayout {
+				Padding = new Thickness (5, 0, 2, 0),
+				BackgroundColor = Color.Black,
+				Children = {
+					browser
+				}
+			};
 
 			//Video description section
 			StackLayout despContent = new StackLayout {

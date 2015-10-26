@@ -73,55 +73,71 @@ namespace INB302_WDGS
                 VerticalOptions = LayoutOptions.FillAndExpand
             };
 
-            var pin = new Pin {
+			var loc = CrossGeolocator.Current;
+			loc.DesiredAccuracy = 100;
+
+			getlocation.Clicked += async (sender, e) => {
+				var pos = await loc.GetPositionAsync (timeoutMilliseconds: 10000);
+
+				map.MoveToRegion (MapSpan.FromCenterAndRadius (
+					new Position(pos.Latitude, pos.Longitude), Distance.FromKilometers(1.0)));
+			};
+
+            var govHouse = new Pin {
                 Type = PinType.Place,
                 Position = new Position (-27.4773531, 153.0289662),
                 Label = "Old Government House",
                 Address = "2 George Street, Brisbane, QLD 4000"
             };
             
-            var pin = new Pin {
+            var parHouse = new Pin {
             	Type = PinType.Place,
             	Position = new Position (-27.4754214, 153.0249879),
             	Label = "Parliament House",
             	Address = "George St, Brisbane QLD 4000"
             };
             
-            var pin = new Pin {
+            var execBuild = new Pin {
             	Type = PinType.Place,
             	Position = new Position (-27.4727061,153.0242916),
             	Label = "Executive Building",
             	Address = "130 William Street, Brisbane QLD 4000"
             };
             
-            var pin = new Pin {
+            var innsCourt = new Pin {
             	Type = PinType.Place,
             	Position = new Position (-27.4693386, 153.0186364),
             	Label = "Inns of Court",
             	Address = "107 North Quay, Brisbane QLD 4000"
             };
             
-            var pin = new Pin {
+            var lawCourts = new Pin {
             	Type = PinType.Place,
             	Position = new Position (-27.468916, 153.0192682),
             	Label = "Commonwealth Law Courts",
             	Address = "119 North Quay, Brisbane QLD 4000"
             };
             
-            var pin = new Pin {
+            var magCourt = new Pin {
             	Type = PinType.Place,
             	Position = new Position (-27.468916, 153.0192682),
             	Label = "Magistrates' Court",
             	Address = "363 George Street, Brisbane QLD 4000"
             };
 
-            var pin = new Pin {
+            var queenCourts = new Pin {
             	Type = PinType.Place,
             	Position = new Position (-27.4674193, 153.0192154),
             	Label = "QEII Courts Complex",
             	Address = "415 George St, Brisbane QLD 4000"
             };            
-            map.Pins.Add (pin);
+			map.Pins.Add (govHouse);
+			map.Pins.Add (parHouse);
+			map.Pins.Add (execBuild);
+			map.Pins.Add (innsCourt);
+			map.Pins.Add (lawCourts);
+			map.Pins.Add (magCourt);
+			map.Pins.Add (queenCourts);
 
             var slider = new Slider (1, 18, 1);
             slider.ValueChanged += (sender, e) => {
@@ -132,19 +148,7 @@ namespace INB302_WDGS
                     map.MoveToRegion (new MapSpan (map.VisibleRegion.Center, latlongdegrees, latlongdegrees));
             };
 
-            getlocation.Clicked += async (sender, e) => {
-                var loc = CrossGeolocator.Current;
-
-                loc.DesiredAccuracy = 100;
-
-                var pos = await loc.GetPositionAsync (timeoutMilliseconds: 10000);
-
-                map.MoveToRegion (MapSpan.FromCenterAndRadius (
-                    new Position (pos), Distance.FromKilometers (0.5)));
-            };
-
             mapContent.Children.Add (map);
-            mapContent.Children.Add (pin);
 			mapContent.Children.Add (getlocation);
             mapContent.Children.Add (slider);
             //End map content
