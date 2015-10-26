@@ -30,11 +30,13 @@ namespace INB302_WDGS
              * see this thread for more info:
              * forums.xamarin.com/discussion/53974/grid-background-colour-disappears-on-load-any-way-to-fix
             */
-            StackLayout instructionContent = new StackLayout
+            StackLayout instructionScrollViewWrapper = new StackLayout
             {
-                Padding = new Thickness(5, 0, 2, 0),
+                Padding = new Thickness(3, 0, 2, 0),
                 BackgroundColor = Color.Black
             };
+
+            StackLayout instructionContent = new StackLayout();
 
             //creating a 5x6 grid 
             //background set to white with row/column spacing
@@ -66,17 +68,113 @@ namespace INB302_WDGS
                 }
             };
 
-            Label instructionLbl = new Label
+            Label instruction1Lbl = new Label
             {
-                Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sollicitudin eget est volutpat varius. Aenean lorem urna, lacinia nec mollis ut, scelerisque quis odio. Integer maximus, ligula at aliquet vehicula, tortor erat aliquet neque, a venenatis nisl dui eu lorem. Fusce pulvinar felis sed orci commodo consectetur. Pellentesque a tempor nulla. Pellentesque fermentum elit et erat elementum, vitae tempus nisi molestie. Maecenas nisl odio, accumsan quis ligula eu, tincidunt ultrices orci. Quisque porttitor bibendum dui, blandit aliquam sem gravida id. Proin ut sem lorem. Etiam eu dapibus libero, vitae eleifend eros. Fusce vulputate nunc sem, ut rutrum mi convallis vel. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam eu eleifend turpis. Proin eget neque orci. Sed rhoncus lectus in sapien congue ultricies. Nulla odio erat, condimentum nec faucibus eget, volutpat quis quam. Morbi convallis luctus erat, sed ultrices ipsum elementum ut. Quisque accumsan quam in ligula varius, a ultricies diam dignissim. Fusce lobortis, risus vitae pellentesque semper, ligula nulla iaculis purus, at pharetra nisi ex in nunc. Duis vel mattis nisi. Vestibulum sagittis ac nibh sit amet vehicula. Vestibulum eleifend semper nisl sit amet vehicula. Sed sit amet lacinia est. Nulla in ex maximus, pharetra tortor suscipit, semper felis. Donec maximus quam turpis, eget facilisis ante interdum et. In et laoreet lacus. Donec bibendum sed metus pretium pretium. Duis at pretium nisi, non molestie dui. Morbi nec diam quis magna commodo vehicula vitae eget purus.",
+                Text = "\nScroll down to read all instructions\n\n" +
+                       "Welcome to the Walk Down George Street app. This app is designed to be completed after you have read in full the introduction on INB101 Blackboard and its purpose is to guide you to six key sites along George Street that are pivotal to the operation of law and government in Queensland.\n\nNow you have successfully downloaded the app, how do you get the most from it?  At each location you are required to complete tasks and answer questions.\n\n1. Meet your fellow team members at the QUT Law Library when ready to begin\n2. Click on the first location and play the video. Take note of what the building looks like\n3. Click on the map icon and follow the directions to locate the building",
                 TextColor = Color.Gray,
                 BackgroundColor = Color.Black,
             };
 
+            Image mapIcon = new Image
+            {
+                Source = "mapIcon.png",
+                HeightRequest = App.screenWidth / 4,
+            };
+
+            Label instruction2Lbl = new Label
+            {
+                Text = "4. When you arrive, click on the questions icon to bring up the questions to complete for the site",
+                TextColor = Color.Gray,
+                BackgroundColor = Color.Black
+            };
+
+
+            Image questionIcon = new Image
+            {
+                Source = "questionIcon.png",
+                HeightRequest = App.screenWidth / 4,
+            };
+
+            Label instruction3Lbl = new Label
+            {
+                Text = "5. Next, click on the tasks icon and complete the tasks",
+                TextColor = Color.Gray,
+                BackgroundColor = Color.Black
+            };
+
+            Image taskIcon = new Image
+            {
+                Source = "taskIcon.png",
+                HeightRequest = App.screenWidth / 4,
+            };
+
+            Label instruction4Lbl = new Label
+            {
+                Text = "If you are required to take a picture, use the camera icon to bring up the camera",
+                TextColor = Color.Gray,
+                BackgroundColor = Color.Black
+            };
+
+            Image cameraIcon = new Image
+            {
+                Source = "cameraIcon.png",
+                HeightRequest = App.screenWidth / 4,
+            };
+
+            Label instruction5Lbl = new Label
+            {
+                Text = "6. Finally, click on the trivia icon to complete the extra trivia questions about the site",
+                TextColor = Color.Gray,
+                BackgroundColor = Color.Black
+            };
+
+            Image triviaIcon = new Image
+            {
+                Source = "triviaIcon.png",
+                BackgroundColor = Color.Black,
+                HeightRequest = App.screenWidth / 4,
+            };
+
+            Label instruction6Lbl = new Label
+            {
+                Text = "Note: answers to your questions will be saved and you can refer to these at a later date, for example during a tutorial.\n\nKey reference material can also be found by clicking on the relevant links icon.",
+                TextColor = Color.Gray,
+                BackgroundColor = Color.Black
+            };
+
+            Image relevantLinksIcon = new Image
+            {
+                Source = "relevantLinksIcon.png",
+                BackgroundColor = Color.Black,
+                HeightRequest = App.screenWidth / 4,
+            };
+
+            Label instruction7Lbl = new Label
+            {
+                Text = "\n\n",
+                TextColor = Color.Gray,
+                BackgroundColor = Color.Black
+            };
+
+            instructionContent.Children.Add(instruction1Lbl);
+            instructionContent.Children.Add(mapIcon);
+            instructionContent.Children.Add(instruction2Lbl);
+            instructionContent.Children.Add(questionIcon);
+            instructionContent.Children.Add(instruction3Lbl);
+            instructionContent.Children.Add(taskIcon);
+            instructionContent.Children.Add(instruction4Lbl);
+            instructionContent.Children.Add(cameraIcon);
+            instructionContent.Children.Add(instruction5Lbl);
+            instructionContent.Children.Add(triviaIcon);
+            instructionContent.Children.Add(instruction6Lbl);
+            instructionContent.Children.Add(relevantLinksIcon);
+            instructionContent.Children.Add(instruction7Lbl);
+
             ScrollView instructions = new ScrollView
             {
                 IsClippedToBounds = true,
-                Content = instructionLbl
+                Content = instructionContent
             };
 
             Label skipLbl = new Label
@@ -95,10 +193,10 @@ namespace INB302_WDGS
             });
 
             //Adding the instruction text to the scrollview
-            instructionContent.Children.Add(instructions);
+            instructionScrollViewWrapper.Children.Add(instructions);
 
             //Adding each page element into the pages grid layout
-            pageGrid.Children.Add(instructionContent, 1, 5, 2, 3);
+            pageGrid.Children.Add(instructionScrollViewWrapper, 1, 5, 2, 3);
 
             pageGrid.Children.Add(new Label
             {

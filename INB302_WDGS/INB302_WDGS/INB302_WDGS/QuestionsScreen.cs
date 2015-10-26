@@ -41,7 +41,7 @@ namespace INB302_WDGS
 
     public class QuestionsScreen : ContentPage
     {
-        private String currentFile = "activity" + App.currentActivity + "Questions.txt";
+        private String currentFile = "activity" + App.currentActivity + "Tasks.txt";
         private Camera cameraOps = null;
 
         public QuestionsScreen()
@@ -299,7 +299,7 @@ namespace INB302_WDGS
             this.Content = innerContent;
 
             //add padding to account for the iOS status bar
-            this.Padding = new Thickness(0, Device.OnPlatform(60, 0, 0), 0, 0);
+            this.Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
             this.BackgroundImage = "background.png";
 
             //when the editor with the questions is unfocused
@@ -377,11 +377,11 @@ namespace INB302_WDGS
                 switch (fileName)
                 {
                     case "activity1Questions.txt":
-                        return currentFile;
+                        return "1. Eleven Queensland governors have lived and worked at Old Government House. What are the duties and responsibilities of the Governor?\n\n\n2. The land now referred to as Gardens Point is part of the traditional country of which people?\n\n\n3. What was the traditional name for Gardens Point?\n\n\n4. What was the official Government policy with respect to Indigenous Australians in the late nineteenth century?";
                     case "activity1Trivia.txt":
-                        return currentFile;
+                        return "1. Why is the statue of Lady Diamantina positioned on the western side of Old Government House?\n\n\n2. What long-standing feud between New Zealand and Australia may be settled by looking at the history of Old Government House and the influence of one of its famous residents?\nHint: See Old Government House website (link provided in activities relevant links)";
                     case "activity1Tasks.txt":
-                        return currentFile;
+                        return "Take a picture of, or with:\n\n1. The statue of Lady Diamantina Bowen.\n\n\n2. The shield on the wall at the entrance to OGH and make a note of who opened the building after its most recent renovations.";
                     default:
                         break;
                 }

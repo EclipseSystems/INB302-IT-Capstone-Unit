@@ -29,6 +29,7 @@ namespace INB302_WDGS.iOS
             {
                 Control.BackgroundColor = UIColor.Black;
                 Control.TextColor = UIColor.LightGray;
+                Control.Font = UIFont.SystemFontOfSize(16);
             }
         }
     }
