@@ -124,7 +124,7 @@ namespace INB302_WDGS
 
             Label instruction5Lbl = new Label
             {
-                Text = "6. Finally, click on the trivia icon to complete the extra trivia questions about the site",
+                Text = "6. Next, click on the trivia icon to complete the extra trivia questions about the site",
                 TextColor = Color.Gray,
                 BackgroundColor = Color.Black
             };
@@ -138,7 +138,7 @@ namespace INB302_WDGS
 
             Label instruction6Lbl = new Label
             {
-                Text = "Note: answers to your questions will be saved and you can refer to these at a later date, for example during a tutorial.\n\nKey reference material can also be found by clicking on the relevant links icon.",
+                Text = "7. Finally, you can post pictures to Twitter using the following hash tags, #QUTWalkDownGeorgeStreet and #QUTSeeingMyselfInTheLaw\n8. There are 7 locations to visit and complete.\n\nNote: answers to your questions will be saved and you can refer to these at a later date, for example during a tutorial.\n\nKey reference material can also be found by clicking on the relevant links icon.",
                 TextColor = Color.Gray,
                 BackgroundColor = Color.Black
             };
@@ -152,7 +152,7 @@ namespace INB302_WDGS
 
             Label instruction7Lbl = new Label
             {
-                Text = "\n\n",
+                Text = "\nHave fun and enjoy your Walk Down George Street!\n\n",
                 TextColor = Color.Gray,
                 BackgroundColor = Color.Black
             };
