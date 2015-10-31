@@ -150,6 +150,8 @@
     <AndroidResource Include="Resources\drawable\taskIcon.png" />
     <AndroidResource Include="Resources\drawable\triviaIcon.png" />
     <AndroidResource Include="Resources\drawable\cameraIcon.png" />
+	<AndroidResource Include="Resources\drawable\activitiesIcon.png" />
+    <AndroidResource Include="Resources\drawable\instructionIcon.png" />
     <AndroidResource Include="Resources\drawable\mapIcon.png" />
     <AndroidResource Include="Resources\drawable\relevantLinksIcon.png" />
     <AndroidResource Include="Resources\drawable\QutLogoWhite.png" />
