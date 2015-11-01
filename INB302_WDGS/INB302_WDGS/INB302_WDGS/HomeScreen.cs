@@ -251,7 +251,7 @@ namespace INB302_WDGS
         }
         private void goToInstructions()
         {
-            App.Current.MainPage = new Instructions();
+            App.Current.MainPage = new RelevantLinks();
         }
     }
 }

@@ -41,6 +41,7 @@
     <Compile Include="LoadingScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionsScreen.cs" />
+    <Compile Include="RelevantLinks.cs" />
     <Compile Include="ViewModels\CameraClass.cs" />
     <Compile Include="MapScreen.cs" />
     <Compile Include="YouTubeScreen.cs" />
