@@ -24,6 +24,20 @@ namespace INB302_WDGS
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 Padding = new Thickness(4, 0, 0, 0)
             };
+            StackLayout ActivityLayout1 = new StackLayout
+            {
+                BackgroundColor = Color.Black,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Padding = new Thickness(4, 0, 0, 0)
+            };
+            StackLayout ActivityLayout2 = new StackLayout
+            {
+                BackgroundColor = Color.Black,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Padding = new Thickness(4, 0, 0, 0)
+            };
             #endregion
 
             //creating each of the image icons for
@@ -38,9 +52,12 @@ namespace INB302_WDGS
                 HorizontalOptions = LayoutOptions.StartAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
+            
             #endregion
 
             logoLayout.Children.Add(logo);
+            //ActivityLayout1.Children.Add(ActivityBuilding1);
+            //ActivityLayout2.Children.Add(ActivityBuilding2);
 
             Grid pageGrid = new Grid
             {
@@ -73,7 +90,7 @@ namespace INB302_WDGS
                 {
                     new ColumnDefinition {Width = 0},
                     new ColumnDefinition {Width = App.screenWidth / 10},
-                    new ColumnDefinition {Width = App.screenWidth / 2 - 32},
+                    new ColumnDefinition {Width = App.screenWidth / 2 },
                     new ColumnDefinition {Width = 3*App.screenWidth / 10},
                     new ColumnDefinition {Width = 0}
 
@@ -84,64 +101,64 @@ namespace INB302_WDGS
             #region ActivitiesLabels
             Label Activity1 = new Label
             {
-                Text = " 1. OLD GOVERNMENT HOUSE",
+                Text = "  1. Old Government House",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
-                FontSize = 12,
+                FontSize = 14,
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.Center
             };
             Label Activity2 = new Label
             {
-                Text = " 2. PARLIAMENT HOUSE",
+                Text = "  2. Parliament House",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
-                FontSize = 12,
+                FontSize = 14,
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.Center
             };
             Label Activity3 = new Label
             {
-                Text = " 3. EXECUTIVE BUILDING",
+                Text = "  3. Executive Building",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
-                FontSize = 12,
+                FontSize = 14,
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.Center
             };
             Label Activity4 = new Label
             {
-                Text = " 4. INNS OF COURT",
+                Text = "  4. Inns of Court",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
-                FontSize = 12,
+                FontSize = 14,
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.Center
             };
             Label Activity5 = new Label
             {
-                Text = " 5. COMMONWEALTH LAW COURTS",
+                Text = "  5. Commonwealth Law Courts",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
-                FontSize = 12,
+                FontSize = 14,
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.Center
             };
             Label Activity6 = new Label
             {
-                Text = " 6. MAGISTRATES COURT",
+                Text = "  6. Magistrates Court",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
-                FontSize = 12,
+                FontSize = 14,
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.Center
             };
             Label Activity7 = new Label
             {
-                Text = " 7. QUEEN ELIZABETH II COURTS COMPLEX",
+                Text = "  7. Queen Elizabeth II Court Complex",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
-                FontSize = 12,
+                FontSize = 14,
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.Center
             };
@@ -189,6 +206,8 @@ namespace INB302_WDGS
                 Command = new Command(() => goToQuestionsScreen1("7"))
             });
             #endregion
+
+            //The Back Button label
             Label backLbl = new Label
             {
                 Text = "<",
@@ -214,6 +233,8 @@ namespace INB302_WDGS
             pageGrid.Children.Add(Activity5, 1, 3, 6, 7);
             pageGrid.Children.Add(Activity6, 1, 3, 7, 8);
             pageGrid.Children.Add(Activity7, 1, 3, 8, 9);
+        
+
 
             StackLayout innerContent = new StackLayout
             {
