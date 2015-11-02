@@ -79,6 +79,7 @@ namespace INB302_WDGS
                 }
             };
 
+            //The Labels for all the Links within the Links section
             # region Links
             Label Activity1 = new Label
             {
@@ -370,6 +371,7 @@ namespace INB302_WDGS
                 Command = new Command(() => goBack())
             });
 
+            //Tap registers for all the Link labels
             # region LinkGestures
             link1a.GestureRecognizers.Add(new TapGestureRecognizer
             {
@@ -458,7 +460,8 @@ namespace INB302_WDGS
                 Command = new Command(() => Device.OpenUri(new Uri("http://www.courts.qld.gov.au/courts/supreme-court")))
             });
             #endregion
-            
+
+            //Adds links depending on current task being conducted
             if (App.currentActivity == "1")
             {
                 LinksContent.Children.Add(Activity1);
