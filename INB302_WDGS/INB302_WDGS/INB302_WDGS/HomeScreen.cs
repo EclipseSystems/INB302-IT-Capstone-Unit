@@ -33,6 +33,29 @@ namespace INB302_WDGS
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
+            Image Activities = new Image
+            {
+                Source = "activitiesIcon.png",
+                HeightRequest = (App.screenHeight / 6) - 4,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand
+            };
+            Image Instruction = new Image
+            {
+                Source = "instructionIcon.png",
+                HeightRequest = (App.screenHeight / 6) - 4,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand
+            };
+            
+            Activities.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() => goToQuestionsScreen())
+            });
+            Instruction.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() => goToInstructions())
+            });
             #endregion
 
             #region imageIconLayouts
@@ -44,6 +67,20 @@ namespace INB302_WDGS
                 Padding = new Thickness(4, 0, 0, 0)
             };
             StackLayout WDGS_logoLayout = new StackLayout
+            {
+                BackgroundColor = Color.Black,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Padding = new Thickness(4, 0, 0, 0)
+            };
+            StackLayout ActivitiesLayout = new StackLayout
+            {
+                BackgroundColor = Color.Black,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Padding = new Thickness(4, 0, 0, 0)
+            };
+            StackLayout InstructionLayout = new StackLayout
             {
                 BackgroundColor = Color.Black,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -73,7 +110,7 @@ namespace INB302_WDGS
                     new RowDefinition {Height = 0},
                     new RowDefinition {Height = App.screenHeight / 12},
                     new RowDefinition {Height = App.screenHeight / 1.52},
-                    new RowDefinition {Height = App.screenHeight / 6},
+                    new RowDefinition {Height = App.screenHeight / 6 + 20},
                     new RowDefinition {Height = 0}
                 },
                 ColumnDefinitions = 
@@ -84,17 +121,43 @@ namespace INB302_WDGS
                     new ColumnDefinition {Width = 0}
                 }
             };
-            
+            Label Act = new Label
+            {
+                Text = "ACTIVITIES",
+                BackgroundColor = Color.Black,
+                TextColor = Color.White,
+                FontSize = 10,
+                XAlign = TextAlignment.Center,
+                YAlign = TextAlignment.Center
+            };
+            Label Ins = new Label
+            {
+                Text = "INSTRUCTIONS",
+                BackgroundColor = Color.Black,
+                TextColor = Color.White,
+                FontSize = 10,
+                XAlign = TextAlignment.Center,
+                YAlign = TextAlignment.Center
+            };
+
             logoLayout.Children.Add(logo);
             pageGrid.Children.Add(logoLayout, 1, 3, 1, 2);
             WDGS_logoLayout.Children.Add(WDGS_logo);
             pageGrid.Children.Add(WDGS_logoLayout, 1, 3, 2, 3);
-			Label skipLbl = new Label
+            ActivitiesLayout.Children.Add(Activities);
+            ActivitiesLayout.Children.Add(Act);
+            pageGrid.Children.Add(ActivitiesLayout, 1, 2, 3, 4);
+            InstructionLayout.Children.Add(Instruction);
+            InstructionLayout.Children.Add(Ins);
+            pageGrid.Children.Add(InstructionLayout, 2, 3, 3, 4);
+
+           
+            Label skipLbl = new Label
 			{
 				Text = "Go to Activity questions",
 				BackgroundColor = Color.Black,
 				TextColor = Color.White,
-				FontSize = 20,
+				FontSize = 10,
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center
 			};
@@ -109,7 +172,7 @@ namespace INB302_WDGS
                 Text = "Go to Second Activity questions",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
-                FontSize = 20,
+                FontSize = 10,
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center
             };
@@ -124,7 +187,7 @@ namespace INB302_WDGS
                 Text = "this leads to youtube screen",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
-                FontSize = 20,
+                FontSize = 10,
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center
             };
@@ -139,7 +202,7 @@ namespace INB302_WDGS
                 Text = "this leads to maps",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
-                FontSize = 20,
+                FontSize = 10,
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center
             };
@@ -157,12 +220,7 @@ namespace INB302_WDGS
              };
             innerContent.Children.Add(pageGrid);
 
-                //Children = {
-                //    skipLbl,
-                //    skip2Lbl,
-                //    skip3Lbl,
-                //    skip4Lbl
-                //}
+           
            
 
 
@@ -174,7 +232,7 @@ namespace INB302_WDGS
 		private void goToQuestionsScreen()
 		{
             App.currentActivity = "1";
-            App.Current.MainPage = new QuestionsScreen();
+            App.Current.MainPage = new MainActivities();
 		}
 
         private void goToQuestionsScreen2()
@@ -191,6 +249,10 @@ namespace INB302_WDGS
         private void goToMaps()
         {
             App.Current.MainPage = new MapScreen();
+        }
+        private void goToInstructions()
+        {
+            App.Current.MainPage = new Instructions();
         }
     }
 }
