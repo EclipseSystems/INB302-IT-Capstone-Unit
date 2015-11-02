@@ -139,6 +139,7 @@ namespace INB302_WDGS
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center
             };
+
             logoLayout.Children.Add(logo);
             pageGrid.Children.Add(logoLayout, 1, 3, 1, 2);
             WDGS_logoLayout.Children.Add(WDGS_logo);
@@ -231,7 +232,7 @@ namespace INB302_WDGS
 		private void goToQuestionsScreen()
 		{
             App.currentActivity = "1";
-            App.Current.MainPage = new QuestionsScreen();
+            App.Current.MainPage = new MainActivities();
 		}
 
         private void goToQuestionsScreen2()
@@ -251,7 +252,7 @@ namespace INB302_WDGS
         }
         private void goToInstructions()
         {
-            App.Current.MainPage = new RelevantLinks();
+            App.Current.MainPage = new Instructions();
         }
     }
 }
