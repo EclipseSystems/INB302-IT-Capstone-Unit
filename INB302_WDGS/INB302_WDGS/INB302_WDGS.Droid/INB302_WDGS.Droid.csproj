@@ -151,6 +151,13 @@
     <AndroidResource Include="Resources\drawable\triviaIcon.png" />
     <AndroidResource Include="Resources\drawable\cameraIcon.png" />
 	<AndroidResource Include="Resources\drawable\activitiesIcon.png" />
+	<AndroidResource Include="Resources\drawable\activityBuilding1.jpg" />
+	<AndroidResource Include="Resources\drawable\activityBuilding2.jpg" />
+	<AndroidResource Include="Resources\drawable\activityBuilding3.jpg" />
+	<AndroidResource Include="Resources\drawable\activityBuilding4.jpg" />
+	<AndroidResource Include="Resources\drawable\activityBuilding5.jpg" />
+	<AndroidResource Include="Resources\drawable\activityBuilding6.jpg" />
+	<AndroidResource Include="Resources\drawable\activityBuilding7.jpg" />
     <AndroidResource Include="Resources\drawable\instructionIcon.png" />
     <AndroidResource Include="Resources\drawable\mapIcon.png" />
     <AndroidResource Include="Resources\drawable\relevantLinksIcon.png" />

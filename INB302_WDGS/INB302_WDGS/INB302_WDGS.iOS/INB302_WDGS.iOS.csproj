@@ -265,6 +265,13 @@
     <BundleResource Include="Resources\relevantLinksIcon.png" />
     <BundleResource Include="Resources\activitiesIcon.png" />
     <BundleResource Include="Resources\instructionIcon.png" />
+    <BundleResource Include="Resources\activityBuilding1.JPG" />
+    <BundleResource Include="Resources\activityBuilding2.JPG" />
+    <BundleResource Include="Resources\activityBuilding3.JPG" />
+    <BundleResource Include="Resources\activityBuilding4.JPG" />
+    <BundleResource Include="Resources\activityBuilding5.JPG" />
+    <BundleResource Include="Resources\activityBuilding6.JPG" />
+    <BundleResource Include="Resources\activityBuilding7.JPG" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
