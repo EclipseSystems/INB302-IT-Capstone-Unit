@@ -52,7 +52,55 @@ namespace INB302_WDGS
                 HorizontalOptions = LayoutOptions.StartAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
-            
+            Image Building1 = new Image
+            {
+                Source = "bakground.png",
+                HeightRequest = (App.screenHeight / 12) - 4,
+                HorizontalOptions = LayoutOptions.StartAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand
+            };
+            Image Building2 = new Image
+            {
+                Source = "background.png",
+                HeightRequest = (App.screenHeight / 12) - 4,
+                HorizontalOptions = LayoutOptions.StartAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand
+            };
+            Image Building3 = new Image
+            {
+                Source = "background.png",
+                HeightRequest = (App.screenHeight / 12) - 4,
+                HorizontalOptions = LayoutOptions.StartAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand
+            };
+            Image Building4 = new Image
+            {
+                Source = "background.png",
+                HeightRequest = (App.screenHeight / 12) - 4,
+                HorizontalOptions = LayoutOptions.StartAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand
+            };
+            Image Building5 = new Image
+            {
+                Source = "background.png",
+                HeightRequest = (App.screenHeight / 12) - 4,
+                HorizontalOptions = LayoutOptions.StartAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand
+            };
+            Image Building6 = new Image
+            {
+                Source = "background.png",
+                HeightRequest = (App.screenHeight / 12) - 4,
+                HorizontalOptions = LayoutOptions.StartAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand
+            };
+            Image Building7 = new Image
+            {
+                Source = "background.png",
+                HeightRequest = (App.screenHeight / 12) - 4,
+                HorizontalOptions = LayoutOptions.StartAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand
+            };
             #endregion
 
             logoLayout.Children.Add(logo);
@@ -233,9 +281,13 @@ namespace INB302_WDGS
             pageGrid.Children.Add(Activity5, 1, 3, 6, 7);
             pageGrid.Children.Add(Activity6, 1, 3, 7, 8);
             pageGrid.Children.Add(Activity7, 1, 3, 8, 9);
-        
-
-
+            pageGrid.Children.Add(Building1, 3, 4, 2, 3);
+            pageGrid.Children.Add(Building2, 3, 4, 3, 4);
+            pageGrid.Children.Add(Building3, 3, 4, 4, 5);
+            pageGrid.Children.Add(Building4, 3, 4, 5, 6);
+            pageGrid.Children.Add(Building5, 3, 4, 6, 7);
+            pageGrid.Children.Add(Building6, 3, 4, 7, 8);
+            pageGrid.Children.Add(Building7, 3, 4, 8, 9);
             StackLayout innerContent = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.Center,
