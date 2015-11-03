@@ -265,13 +265,6 @@
     <BundleResource Include="Resources\relevantLinksIcon.png" />
     <BundleResource Include="Resources\activitiesIcon.png" />
     <BundleResource Include="Resources\instructionIcon.png" />
-    <BundleResource Include="Resources\activityBuilding1.JPG" />
-    <BundleResource Include="Resources\activityBuilding2.JPG" />
-    <BundleResource Include="Resources\activityBuilding3.JPG" />
-    <BundleResource Include="Resources\activityBuilding4.JPG" />
-    <BundleResource Include="Resources\activityBuilding5.JPG" />
-    <BundleResource Include="Resources\activityBuilding6.JPG" />
-    <BundleResource Include="Resources\activityBuilding7.JPG" />
     <BundleResource Include="Resources\activityBuilding1.png" />
     <BundleResource Include="Resources\activityBuilding2.png" />
     <BundleResource Include="Resources\activityBuilding3.png" />
