@@ -151,7 +151,8 @@ namespace INB302_WDGS
             InstructionLayout.Children.Add(Ins);
             pageGrid.Children.Add(InstructionLayout, 2, 3, 3, 4);
 
-           
+            //Content from the original home screen, no longer being used
+            #region Prievoushomescreen
             Label skipLbl = new Label
 			{
 				Text = "Go to Activity questions",
@@ -211,6 +212,8 @@ namespace INB302_WDGS
             {
                 Command = new Command(() => goToMaps()),
             });
+
+            #endregion
 
             StackLayout innerContent = new StackLayout
             {
