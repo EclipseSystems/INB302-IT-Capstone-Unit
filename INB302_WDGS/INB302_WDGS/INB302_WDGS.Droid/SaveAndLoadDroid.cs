@@ -100,7 +100,7 @@ namespace INB302_WDGS.Droid
                 mediaScanIntent.SetData(Android.Net.Uri.Parse(filePath));
                 Xamarin.Forms.Forms.Context.SendBroadcast(mediaScanIntent);
             }
-            catch (System.Exception e)
+            catch
             {
                 message = "error";
             }

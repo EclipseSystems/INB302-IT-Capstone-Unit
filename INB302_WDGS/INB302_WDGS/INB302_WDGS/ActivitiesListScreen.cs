@@ -8,9 +8,9 @@ using Xamarin.Forms;
 
 namespace INB302_WDGS
 {
-    public class MainActivities : ContentPage
+    public class ActivitiesListScreen : ContentPage
     {
-        public MainActivities()
+        public ActivitiesListScreen()
         {
             //creating layouts to store each of the images within the grid
             //without this the background of the grid is white when we want

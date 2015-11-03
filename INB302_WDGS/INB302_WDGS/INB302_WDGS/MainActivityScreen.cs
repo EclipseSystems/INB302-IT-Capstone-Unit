@@ -10,9 +10,9 @@ using Xamarin.Forms;
 
 namespace INB302_WDGS
 {
-	public class YouTubeScreen : ContentPage
+	public class MainActivityScreen : ContentPage
 	{
-		public YouTubeScreen ()
+		public MainActivityScreen ()
 		{
 			//Layout definition
 			StackLayout logoLayout = new StackLayout {

@@ -17,7 +17,7 @@ namespace INB302_WDGS {
 
             if (Device.OS == TargetPlatform.iOS)
             {
-                MainPage = new Instructions();
+                MainPage = new InstructionsScreen();
             }
             else
             {

@@ -58,7 +58,7 @@ namespace INB302_WDGS
         {
             //delay the load to create a loading experience
             await Task.Delay(3000);
-            App.Current.MainPage = new Instructions();
+            App.Current.MainPage = new InstructionsScreen();
         }
     }
 }

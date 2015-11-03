@@ -9,9 +9,9 @@ using Xamarin.Forms;
 
 namespace INB302_WDGS
 {
-    public class Instructions : ContentPage
+    public class InstructionsScreen : ContentPage
     {
-        public Instructions()
+        public InstructionsScreen()
         {
             //creating each layout to host all the pages content
             StackLayout innerContent = new StackLayout

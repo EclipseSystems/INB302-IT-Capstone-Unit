@@ -8,9 +8,9 @@ using Xamarin.Forms;
 
 namespace INB302_WDGS
 {
-    public class RelevantLinks : ContentPage
+    public class RelevantLinksScreen : ContentPage
     {
-        public RelevantLinks()
+        public RelevantLinksScreen()
         {
             //creating layouts to store each of the images within the grid
             //without this the background of the grid is white when we want

@@ -235,7 +235,7 @@ namespace INB302_WDGS
 		private void goToQuestionsScreen()
 		{
             App.currentActivity = "1";
-            App.Current.MainPage = new MainActivities();
+            App.Current.MainPage = new ActivitiesListScreen();
 		}
 
         private void goToQuestionsScreen2()
@@ -246,7 +246,7 @@ namespace INB302_WDGS
 
         private void goToYouTube()
         {
-            App.Current.MainPage = new YouTubeScreen();
+            App.Current.MainPage = new MainActivityScreen();
         }
 
         private void goToMaps()
@@ -255,7 +255,7 @@ namespace INB302_WDGS
         }
         private void goToInstructions()
         {
-            App.Current.MainPage = new Instructions();
+            App.Current.MainPage = new InstructionsScreen();
         }
     }
 }
