@@ -22,21 +22,110 @@ namespace INB302_WDGS
                 BackgroundColor = Color.Black,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
-                Padding = new Thickness(4, 0, 0, 0)
+                
             };
-            StackLayout ActivityLayout1 = new StackLayout
+            StackLayout ActivityImageLayout1 = new StackLayout
             {
                 BackgroundColor = Color.Black,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
-                Padding = new Thickness(4, 0, 0, 0)
+                
             };
-            StackLayout ActivityLayout2 = new StackLayout
+            StackLayout ActivityImageLayout2 = new StackLayout
             {
                 BackgroundColor = Color.Black,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
-                Padding = new Thickness(4, 0, 0, 0)
+               
+            };
+            StackLayout ActivityImageLayout3 = new StackLayout
+            {
+                BackgroundColor = Color.Black,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                
+            };
+            StackLayout ActivityImageLayout4 = new StackLayout
+            {
+                BackgroundColor = Color.Black,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+               
+            };
+            StackLayout ActivityImageLayout5 = new StackLayout
+            {
+                BackgroundColor = Color.Black,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                
+            };
+            StackLayout ActivityImageLayout6 = new StackLayout
+            {
+                BackgroundColor = Color.Black,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                
+            };
+            StackLayout ActivityImageLayout7 = new StackLayout
+            {
+                BackgroundColor = Color.Black,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                
+            };
+            #endregion
+
+            //Layouts for the activity labels, to add padding
+            # region LabelLayouts
+            StackLayout ActivityLabelLayout1 = new StackLayout
+            {
+                BackgroundColor = Color.Black,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Padding = new Thickness(8, 0, 0, 0)
+                
+            };
+            StackLayout ActivityLabelLayout2 = new StackLayout
+            {
+                BackgroundColor = Color.Black,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Padding = new Thickness(8, 0, 0, 0)
+            };
+            StackLayout ActivityLabelLayout3 = new StackLayout
+            {
+                BackgroundColor = Color.Black,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Padding = new Thickness(8, 0, 0, 0)
+            };
+            StackLayout ActivityLabelLayout4 = new StackLayout
+            {
+                BackgroundColor = Color.Black,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Padding = new Thickness(8, 0, 0, 0)
+            };
+            StackLayout ActivityLabelLayout5 = new StackLayout
+            {
+                BackgroundColor = Color.Black,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Padding = new Thickness(8, 0, 0, 0)
+            };
+            StackLayout ActivityLabelLayout6 = new StackLayout
+            {
+                BackgroundColor = Color.Black,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Padding = new Thickness(8, 0, 0, 0)
+            };
+            StackLayout ActivityLabelLayout7 = new StackLayout
+            {
+                BackgroundColor = Color.Black,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Padding = new Thickness(8, 0, 0, 0)
             };
             #endregion
 
@@ -48,64 +137,76 @@ namespace INB302_WDGS
             Image logo = new Image
             {
                 Source = "QutLogoWhite.png",
-                HeightRequest = (App.screenHeight / 12) - 4,
+                HeightRequest = (App.screenHeight / 9),
                 HorizontalOptions = LayoutOptions.StartAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
             Image Building1 = new Image
             {
-                Source = "activityBuilding4.png",
-                HeightRequest = (App.screenHeight / 12) - 4,
-                HorizontalOptions = LayoutOptions.StartAndExpand,
+                Source = "activityBuilding1.png",
+                HeightRequest = (App.screenHeight / 9),
+                WidthRequest = 3 * App.screenWidth / 10,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
             Image Building2 = new Image
             {
-                Source = "background.png",
-                HeightRequest = (App.screenHeight / 12) - 4,
-                HorizontalOptions = LayoutOptions.StartAndExpand,
+                Source = "activityBuilding2.png",
+                HeightRequest = (App.screenHeight / 9),
+                WidthRequest = 3 * App.screenWidth / 10,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
             Image Building3 = new Image
             {
-                Source = "background.png",
-                HeightRequest = (App.screenHeight / 12) - 4,
-                HorizontalOptions = LayoutOptions.StartAndExpand,
+                Source = "activityBuilding3.png",
+                HeightRequest = (App.screenHeight / 9),
+                WidthRequest = 3 * App.screenWidth / 10,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
             Image Building4 = new Image
             {
-                Source = "background.png",
-                HeightRequest = (App.screenHeight / 12) - 4,
-                HorizontalOptions = LayoutOptions.StartAndExpand,
+                Source = "activityBuilding4.png",
+                HeightRequest = (App.screenHeight / 9),
+                WidthRequest = 3 * App.screenWidth / 10,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
             Image Building5 = new Image
             {
-                Source = "background.png",
-                HeightRequest = (App.screenHeight / 12) - 4,
-                HorizontalOptions = LayoutOptions.StartAndExpand,
+                Source = "activityBuilding5.png",
+                HeightRequest = (App.screenHeight / 9),
+                WidthRequest = 3 * App.screenWidth / 10,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
             Image Building6 = new Image
             {
-                Source = "background.png",
-                HeightRequest = (App.screenHeight / 12) - 4,
-                HorizontalOptions = LayoutOptions.StartAndExpand,
+                Source = "activityBuilding6.png",
+                HeightRequest = (App.screenHeight / 9),
+                WidthRequest = 3 * App.screenWidth / 10,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
             Image Building7 = new Image
             {
-                Source = "background.png",
-                HeightRequest = (App.screenHeight / 12) - 4,
-                HorizontalOptions = LayoutOptions.StartAndExpand,
+                Source = "activityBuilding7.png",
+                HeightRequest = (App.screenHeight / 9),
+                WidthRequest = 3 * App.screenWidth / 10,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
             #endregion
 
             logoLayout.Children.Add(logo);
-            //ActivityLayout1.Children.Add(ActivityBuilding1);
-            //ActivityLayout2.Children.Add(ActivityBuilding2);
+            ActivityImageLayout1.Children.Add(Building1);
+            ActivityImageLayout2.Children.Add(Building2);
+            ActivityImageLayout3.Children.Add(Building3);
+            ActivityImageLayout4.Children.Add(Building4);
+            ActivityImageLayout5.Children.Add(Building5);
+            ActivityImageLayout6.Children.Add(Building6);
+            ActivityImageLayout7.Children.Add(Building7);
 
             Grid pageGrid = new Grid
             {
@@ -139,7 +240,7 @@ namespace INB302_WDGS
                     new ColumnDefinition {Width = 0},
                     new ColumnDefinition {Width = App.screenWidth / 10},
                     new ColumnDefinition {Width = App.screenWidth / 2 },
-                    new ColumnDefinition {Width = 3*App.screenWidth / 10},
+                    new ColumnDefinition {Width = App.screenWidth / 3.33333},
                     new ColumnDefinition {Width = 0}
 
                 }
@@ -149,7 +250,7 @@ namespace INB302_WDGS
             #region ActivitiesLabels
             Label Activity1 = new Label
             {
-                Text = "  1. Old Government House",
+                Text = "1. Old Government House",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
                 FontSize = 14,
@@ -158,7 +259,7 @@ namespace INB302_WDGS
             };
             Label Activity2 = new Label
             {
-                Text = "  2. Parliament House",
+                Text = "2. Parliament House",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
                 FontSize = 14,
@@ -167,7 +268,7 @@ namespace INB302_WDGS
             };
             Label Activity3 = new Label
             {
-                Text = "  3. Executive Building",
+                Text = "3. Executive Building",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
                 FontSize = 14,
@@ -176,7 +277,7 @@ namespace INB302_WDGS
             };
             Label Activity4 = new Label
             {
-                Text = "  4. Inns of Court",
+                Text = "4. Inns of Court",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
                 FontSize = 14,
@@ -185,7 +286,7 @@ namespace INB302_WDGS
             };
             Label Activity5 = new Label
             {
-                Text = "  5. Commonwealth Law Courts",
+                Text = "5. Commonwealth Law Courts",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
                 FontSize = 14,
@@ -194,7 +295,7 @@ namespace INB302_WDGS
             };
             Label Activity6 = new Label
             {
-                Text = "  6. Magistrates Court",
+                Text = "6. Magistrates Court",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
                 FontSize = 14,
@@ -203,7 +304,7 @@ namespace INB302_WDGS
             };
             Label Activity7 = new Label
             {
-                Text = "  7. Queen Elizabeth II Court Complex",
+                Text = "7. Queen Elizabeth II Court Complex",
                 BackgroundColor = Color.Black,
                 TextColor = Color.White,
                 FontSize = 14,
@@ -212,6 +313,13 @@ namespace INB302_WDGS
             };
             #endregion
 
+            ActivityLabelLayout1.Children.Add(Activity1);
+            ActivityLabelLayout2.Children.Add(Activity2);
+            ActivityLabelLayout3.Children.Add(Activity3);
+            ActivityLabelLayout4.Children.Add(Activity4);
+            ActivityLabelLayout5.Children.Add(Activity5);
+            ActivityLabelLayout6.Children.Add(Activity6);
+            ActivityLabelLayout7.Children.Add(Activity7);
             //Layouts for each building activity
             #region Activitieslayouts
             StackLayout Activity1Layout = new StackLayout
@@ -229,30 +337,72 @@ namespace INB302_WDGS
             {
                 Command = new Command(() => goToQuestionsScreen1("1"))
             });
+
+            ActivityImageLayout1.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() => goToQuestionsScreen1("1"))
+            });
+
             Activity2.GestureRecognizers.Add(new TapGestureRecognizer
             {
                 Command = new Command(() => goToQuestionsScreen1("2"))
             });
+
+            ActivityImageLayout2.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() => goToQuestionsScreen1("2"))
+            });
+
             Activity3.GestureRecognizers.Add(new TapGestureRecognizer
             {
                 Command = new Command(() => goToQuestionsScreen1("3"))
             });
+
+            ActivityImageLayout3.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() => goToQuestionsScreen1("3"))
+            });
+
             Activity4.GestureRecognizers.Add(new TapGestureRecognizer
             {
                 Command = new Command(() => goToQuestionsScreen1("4"))
             });
+
+            ActivityImageLayout4.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() => goToQuestionsScreen1("4"))
+            });
+
             Activity5.GestureRecognizers.Add(new TapGestureRecognizer
             {
                 Command = new Command(() => goToQuestionsScreen1("5"))
             });
+
+            ActivityImageLayout5.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() => goToQuestionsScreen1("5"))
+            });
+
             Activity6.GestureRecognizers.Add(new TapGestureRecognizer
             {
                 Command = new Command(() => goToQuestionsScreen1("6"))
             });
+
+            ActivityImageLayout6.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() => goToQuestionsScreen1("6"))
+            });
+
             Activity7.GestureRecognizers.Add(new TapGestureRecognizer
             {
                 Command = new Command(() => goToQuestionsScreen1("7"))
             });
+
+            ActivityImageLayout7.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() => goToQuestionsScreen1("7"))
+            });
+
             #endregion
 
             //The Back Button label
@@ -274,20 +424,20 @@ namespace INB302_WDGS
             //adding each element to the grid
             pageGrid.Children.Add(backLbl, 1, 1); //back button
             pageGrid.Children.Add(logoLayout, 2, 4, 1, 2);
-            pageGrid.Children.Add(Activity1, 1, 3, 2, 3);
-            pageGrid.Children.Add(Activity2, 1, 3, 3, 4);
-            pageGrid.Children.Add(Activity3, 1, 3, 4, 5);
-            pageGrid.Children.Add(Activity4, 1, 3, 5, 6);
-            pageGrid.Children.Add(Activity5, 1, 3, 6, 7);
-            pageGrid.Children.Add(Activity6, 1, 3, 7, 8);
-            pageGrid.Children.Add(Activity7, 1, 3, 8, 9);
-            pageGrid.Children.Add(Building1, 3, 4, 2, 3);
-            pageGrid.Children.Add(Building2, 3, 4, 3, 4);
-            pageGrid.Children.Add(Building3, 3, 4, 4, 5);
-            pageGrid.Children.Add(Building4, 3, 4, 5, 6);
-            pageGrid.Children.Add(Building5, 3, 4, 6, 7);
-            pageGrid.Children.Add(Building6, 3, 4, 7, 8);
-            pageGrid.Children.Add(Building7, 3, 4, 8, 9);
+            pageGrid.Children.Add(ActivityLabelLayout1, 1, 3, 2, 3);
+            pageGrid.Children.Add(ActivityLabelLayout2, 1, 3, 3, 4);
+            pageGrid.Children.Add(ActivityLabelLayout3, 1, 3, 4, 5);
+            pageGrid.Children.Add(ActivityLabelLayout4, 1, 3, 5, 6);
+            pageGrid.Children.Add(ActivityLabelLayout5, 1, 3, 6, 7);
+            pageGrid.Children.Add(ActivityLabelLayout6, 1, 3, 7, 8);
+            pageGrid.Children.Add(ActivityLabelLayout7, 1, 3, 8, 9);
+            pageGrid.Children.Add(ActivityImageLayout1, 3, 4, 2, 3);
+            pageGrid.Children.Add(ActivityImageLayout2, 3, 4, 3, 4);
+            pageGrid.Children.Add(ActivityImageLayout3, 3, 4, 4, 5);
+            pageGrid.Children.Add(ActivityImageLayout4, 3, 4, 5, 6);
+            pageGrid.Children.Add(ActivityImageLayout5, 3, 4, 6, 7);
+            pageGrid.Children.Add(ActivityImageLayout6, 3, 4, 7, 8);
+            pageGrid.Children.Add(ActivityImageLayout7, 3, 4, 8, 9);
             StackLayout innerContent = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.Center,
