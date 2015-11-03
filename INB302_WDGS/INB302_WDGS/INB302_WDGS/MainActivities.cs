@@ -54,7 +54,7 @@ namespace INB302_WDGS
             };
             Image Building1 = new Image
             {
-                Source = "bakground.png",
+                Source = "activityBuilding4.png",
                 HeightRequest = (App.screenHeight / 12) - 4,
                 HorizontalOptions = LayoutOptions.StartAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand
