@@ -37,7 +37,7 @@
     <Compile Include="App.cs" />
     <Compile Include="HomeScreen.cs" />
     <Compile Include="InstructionsScreen.cs" />
-    <Compile Include="ISaveAndLoad.cs" />
+    <Compile Include="SaveAndLoadFiles.cs" />
     <Compile Include="LoadingScreen.cs" />
     <Compile Include="ActivitiesListScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

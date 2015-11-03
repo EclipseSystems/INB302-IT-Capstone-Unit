@@ -13,7 +13,7 @@ namespace INB302_WDGS
      * The service allows for saving and retrieving .txt files and image files,
      * and also a method for checking if camera access is granted
      */
-    public interface ISaveAndLoad
+    public interface SaveAndLoadFiles
     {
         string getFilePath(string fileName);
         void SaveText(string fileName, string text);

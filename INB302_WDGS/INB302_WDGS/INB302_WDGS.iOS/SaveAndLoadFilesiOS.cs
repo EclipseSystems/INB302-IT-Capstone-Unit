@@ -1,27 +1,23 @@
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using INB302_WDGS.Droid;
+﻿using AVFoundation;
+using Foundation;
+using INB302_WDGS.iOS;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UIKit;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(SaveAndLoadDroid))]
+[assembly: Dependency(typeof(SaveAndLoadFilesiOS))]
 
-namespace INB302_WDGS.Droid
-{   
+namespace INB302_WDGS.iOS
+{
     /*
-     * Android implementation of the ISaveAndLoad shared project interface
+     * iOS implementation of the ISaveAndLoad shared project interface
      * Used for saving and reading files on the users device
-     */ 
-    public class SaveAndLoadDroid : ISaveAndLoad
+     */
+    public class SaveAndLoadFilesiOS : SaveAndLoadFiles
     {
         #region ISaveAndLoad implementation
 
@@ -36,7 +32,7 @@ namespace INB302_WDGS.Droid
          * documents folder
          */ 
         public string getFilePath(string fileName)
-        {
+        {        
             var documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal); // Documents folder
             var filePath = Path.Combine(documentsPath, fileName);
             return filePath;
@@ -51,7 +47,7 @@ namespace INB302_WDGS.Droid
          * 
          * Returns:
          * none
-         */ 
+         */
         public void SaveText(string fileName, string text)
         {
             var filePath = getFilePath(fileName);
@@ -86,32 +82,24 @@ namespace INB302_WDGS.Droid
         public String saveImageToGallery(string fileName, byte[] imageBytes)
         {
             var message = "";
-            var dir = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDcim);
-            var pictures = dir.AbsolutePath;
-            //adding a time stamp time file name to allow saving more than one image... 
-            //otherwise it overwrites the previous saved image of the same name
-            string name = fileName + System.DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".jpg";
-            string filePath = System.IO.Path.Combine(pictures, name);
-            try
+            var imageToSave = new UIImage(NSData.FromArray(imageBytes));
+            imageToSave.SaveToPhotosAlbum((image, error) =>
             {
-                System.IO.File.WriteAllBytes(filePath, imageBytes);
-                //mediascan adds the saved image into the gallery
-                var mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
-                mediaScanIntent.SetData(Android.Net.Uri.Parse(filePath));
-                Xamarin.Forms.Forms.Context.SendBroadcast(mediaScanIntent);
-            }
-            catch
-            {
-                message = "error";
-            }
+                if (error != null)
+                {
+                     message = "error";
+                }
+            });
+
             return message;
         }
 
         /*
          * checks if the user has granted camera access
          * 
-         * On android this is always true as access is granted
-         * through the androidmanifest / project properties
+         * On iOS this checks if the camera is authorized
+         * and sets to false if it isn't. If the camera
+         * is authorized for use by the user it sets to true
          * 
          * Params:
          * none
@@ -121,7 +109,14 @@ namespace INB302_WDGS.Droid
          */ 
         public void checkCameraAccess()
         {
-            App.cameraAccessGranted = true;
+            if (AVCaptureDevice.GetAuthorizationStatus(AVMediaType.Video) != AVAuthorizationStatus.Authorized)
+            {
+                App.cameraAccessGranted = false;
+            }
+            else
+            {
+                App.cameraAccessGranted = true;
+            }
         }
 
         #endregion

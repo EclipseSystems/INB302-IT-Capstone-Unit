@@ -537,7 +537,7 @@ namespace INB302_WDGS
             //the initial questions unedited.
             try
             {
-                questionElement.Text = DependencyService.Get<ISaveAndLoad>().LoadText(fileName);
+                questionElement.Text = DependencyService.Get<SaveAndLoadFiles>().LoadText(fileName);
             }
             catch
             {
@@ -555,7 +555,7 @@ namespace INB302_WDGS
          */ 
         private void saveText(Editor questionElement, String fileName)
         {
-            DependencyService.Get<ISaveAndLoad>().SaveText(fileName, questionElement.Text);
+            DependencyService.Get<SaveAndLoadFiles>().SaveText(fileName, questionElement.Text);
         }
 
         /*
@@ -585,7 +585,7 @@ namespace INB302_WDGS
                         mediaFile.Source.CopyTo(memoryStream);
 
                         //saving the image to the devices gallery
-                        if (DependencyService.Get<ISaveAndLoad>().saveImageToGallery("image", memoryStream.ToArray()) == "error")
+                        if (DependencyService.Get<SaveAndLoadFiles>().saveImageToGallery("image", memoryStream.ToArray()) == "error")
                         {
                             await DisplayAlert("Error", "Your photo failed to save, please take it and try again", "OK");
                         }

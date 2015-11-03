@@ -116,7 +116,7 @@
     <Compile Include="CustomEditorRenderer.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="SaveAndLoadiOS.cs" />
+    <Compile Include="SaveAndLoadFilesiOS.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />

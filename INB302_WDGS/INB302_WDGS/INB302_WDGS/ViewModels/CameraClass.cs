@@ -83,7 +83,7 @@ namespace XPA_PickMedia_XLabs_XFP
                     if (t.IsFaulted)
                     {
                         Status = t.Exception.InnerException.ToString();
-                        DependencyService.Get<ISaveAndLoad>().checkCameraAccess();
+                        DependencyService.Get<SaveAndLoadFiles>().checkCameraAccess();
                     }
                     else if (t.IsCanceled)
                     {
@@ -97,13 +97,13 @@ namespace XPA_PickMedia_XLabs_XFP
                         return mediaFile;
                     }
 
-                    DependencyService.Get<ISaveAndLoad>().checkCameraAccess();
+                    DependencyService.Get<SaveAndLoadFiles>().checkCameraAccess();
                     return null;
                 }, _scheduler);
             }
             else
             {
-                DependencyService.Get<ISaveAndLoad>().checkCameraAccess();
+                DependencyService.Get<SaveAndLoadFiles>().checkCameraAccess();
                 return null;
             }
 		}
