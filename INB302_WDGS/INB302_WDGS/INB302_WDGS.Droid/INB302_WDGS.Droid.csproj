@@ -44,6 +44,14 @@
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Geolocator.Plugin, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugin.Geolocator.1.1.0\lib\MonoAndroid10\Geolocator.Plugin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Geolocator.Plugin.Abstractions, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugin.Geolocator.1.1.0\lib\MonoAndroid10\Geolocator.Plugin.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="Mono.Android.Export" />
     <Reference Include="mscorlib" />
@@ -141,10 +149,10 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="PluginsHelp\GeolocatorReadme.txt" />
     <Content Include="Properties\AndroidManifest.xml">
       <SubType>Designer</SubType>
     </Content>
-    <BundleResource Include="Resources\drawable\Default.png" />
     <AndroidResource Include="Resources\drawable\QutLogo.png" />
     <AndroidResource Include="Resources\drawable\questionIcon.png" />
     <AndroidResource Include="Resources\drawable\taskIcon.png" />
