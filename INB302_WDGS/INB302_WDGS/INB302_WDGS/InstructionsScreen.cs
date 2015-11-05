@@ -71,7 +71,7 @@ namespace INB302_WDGS
             Label instruction1Lbl = new Label
             {
                 Text = "\nScroll down to read all instructions\n\n" +
-                       "Welcome to the Walk Down George Street app. This app is designed to be completed after you have read in full the introduction on INB101 Blackboard and its purpose is to guide you to six key sites along George Street that are pivotal to the operation of law and government in Queensland.\n\nNow you have successfully downloaded the app, how do you get the most from it?  At each location you are required to complete tasks and answer questions.\n\n1. Meet your fellow team members at the QUT Law Library when ready to begin\n2. Click on the first location and play the video. Take note of what the building looks like\n3. Click on the map icon and follow the directions to locate the building",
+                       "Welcome to the Walk Down George Street app. This app is designed to be completed after you have read in full the introduction on INB101 Blackboard and its purpose is to guide you to seven key sites along George Street that are pivotal to the operation of law and government in Queensland.\n\nNow you have successfully downloaded the app, how do you get the most from it?  At each location you are required to complete tasks and answer questions.\n\n1. Meet your fellow team members at the QUT Law Library when ready to begin\n2. Click on the first location and play the video. Take note of what the building looks like\n3. Click on the map icon and follow the directions to locate the building",
                 TextColor = Color.Gray,
                 BackgroundColor = Color.Black,
             };
