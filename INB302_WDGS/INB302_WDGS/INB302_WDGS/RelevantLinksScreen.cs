@@ -38,49 +38,12 @@ namespace INB302_WDGS
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
             #endregion
+
             logoLayout.Children.Add(logo);
-            StackLayout LinksContent = new StackLayout
-            {
-                Padding = new Thickness(3, 0, 4, 0),
-                BackgroundColor = Color.Black
-            };
-           
-            Grid pageGrid = new Grid
-            {
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                BackgroundColor = Color.White,
-                Opacity = 0.8,
-                //row and column spacing creates a "bordered"
-                //effect around each element
-                RowSpacing = 2,
-                ColumnSpacing = 2,
-                IsClippedToBounds = true,
-                Padding = new Thickness(.5, 1, .5, 0),
-                //all row heights, and column widths are relative to
-                //the devices screen size/resolution so they should
-                //be an appropriate size on each type of device
-                RowDefinitions = {
-                    new RowDefinition {Height = 0},
-                    new RowDefinition {Height = App.screenHeight / 12},
-                    new RowDefinition {Height = App.screenHeight / 1.213},
-                    new RowDefinition {Height = 0}
-                },
-                ColumnDefinitions = 
-                {
-                    new ColumnDefinition {Width = 0},
-                    new ColumnDefinition {Width = App.screenWidth / 10},
-                    new ColumnDefinition {Width = App.screenWidth / 5 - 32},
-                    new ColumnDefinition {Width = App.screenWidth / 5},
-                    new ColumnDefinition {Width = App.screenWidth / 5},
-                    new ColumnDefinition {Width = App.screenWidth / 5},
-                    new ColumnDefinition {Width = App.screenWidth / 10},
-                    new ColumnDefinition {Width = 0}
-                }
-            };
 
             //The Labels for all the Links within the Links section
             # region Links
+            //Activity 1 text and links
             Label Activity1 = new Label
             {
                 Text = "1. Old Government House",
@@ -121,6 +84,9 @@ namespace INB302_WDGS
                 FontSize = 14,
                 XAlign = TextAlignment.Start
             };
+            //End activity 1 text and links
+
+            //Activity 2 Text and Links
             Label Activity2 = new Label
             {
                 Text = "2. Parliament House",
@@ -169,6 +135,9 @@ namespace INB302_WDGS
                 FontSize = 14,
                 XAlign = TextAlignment.Start
             };
+            //End activity 2 text and links
+
+            //Activity 3 Text and Links
             Label Activity3 = new Label
             {
                 Text = "3. Executive Building",
@@ -185,6 +154,9 @@ namespace INB302_WDGS
                 FontSize = 14,
                 XAlign = TextAlignment.Start
             };
+            //End activity 3 text and links
+
+            //Activity 4 Text and Links
             Label Activity4 = new Label
             {
                 Text = "4. Inns of Court",
@@ -209,6 +181,9 @@ namespace INB302_WDGS
                 FontSize = 14,
                 XAlign = TextAlignment.Start
             };
+            //End activity 4 text and links
+
+            //Activity 5 Text and Links
             Label Activity5 = new Label
             {
                 Text = "5. Commonwealth Law Courts",
@@ -273,6 +248,9 @@ namespace INB302_WDGS
                 FontSize = 14,
                 XAlign = TextAlignment.Start
             };
+            //End activity 5 text and links
+
+            //Activity 6 Text and Links
             Label Activity6 = new Label
             {
                 Text = "6. Magistrates Court",
@@ -305,6 +283,9 @@ namespace INB302_WDGS
                 FontSize = 14,
                 XAlign = TextAlignment.Start
             };
+            //End activity 6 text and links
+
+            //Activity 7 Text and Links
             Label Activity7 = new Label
             {
                 Text = "7. Queen Elizabeth II Courts Complex",
@@ -345,31 +326,18 @@ namespace INB302_WDGS
                 FontSize = 14,
                 XAlign = TextAlignment.Start
             };
+            //End activity 7 text and links
+
+            //Error label
             Label error = new Label
             {
                 Text = "Something went wrong while loading. Please try again by clicking back and reloading the page",
                 BackgroundColor = Color.Black,
-                TextColor = Color.Blue,
-                FontSize = 14,
+                TextColor = Color.Gray,
+                FontSize = 16,
                 XAlign = TextAlignment.Start
             };
             #endregion
-
-
-            Label backLbl = new Label
-            {
-                Text = "<",
-                BackgroundColor = Color.Black,
-                TextColor = Color.White,
-                FontSize = 24,
-                XAlign = TextAlignment.Center,
-                YAlign = TextAlignment.Center
-            };
-          
-            backLbl.GestureRecognizers.Add(new TapGestureRecognizer
-            {
-                Command = new Command(() => goBack())
-            });
 
             //Tap registers for all the Link labels
             # region LinkGestures
@@ -461,6 +429,13 @@ namespace INB302_WDGS
             });
             #endregion
 
+            //StackLayout for all the text of the links
+            StackLayout LinksContent = new StackLayout
+            {
+                Padding = new Thickness(3, 0, 4, 0),
+                BackgroundColor = Color.Black
+            };
+
             //Adds links depending on current task being conducted
             if (App.currentActivity == "1")
             {
@@ -469,7 +444,8 @@ namespace INB302_WDGS
                 LinksContent.Children.Add(link1b);
                 LinksContent.Children.Add(link1c);
                 LinksContent.Children.Add(link1d);
-            } else if (App.currentActivity == "2")
+            } 
+            else if (App.currentActivity == "2")
             {
                 LinksContent.Children.Add(Activity2);
                 LinksContent.Children.Add(link2a);
@@ -518,12 +494,63 @@ namespace INB302_WDGS
             else { 
                 LinksContent.Children.Add(error); 
             }
+
+            Label backLbl = new Label
+            {
+                Text = "<",
+                BackgroundColor = Color.Black,
+                TextColor = Color.White,
+                FontSize = 24,
+                XAlign = TextAlignment.Center,
+                YAlign = TextAlignment.Center
+            };
+
+            backLbl.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() => goBack())
+            });
+
+            Grid pageGrid = new Grid
+            {
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                BackgroundColor = Color.White,
+                Opacity = 0.8,
+                //row and column spacing creates a "bordered"
+                //effect around each element
+                RowSpacing = 2,
+                ColumnSpacing = 2,
+                IsClippedToBounds = true,
+                Padding = new Thickness(.5, 1, .5, 0),
+                //all row heights, and column widths are relative to
+                //the devices screen size/resolution so they should
+                //be an appropriate size on each type of device
+                RowDefinitions = {
+                    new RowDefinition {Height = 0},
+                    new RowDefinition {Height = App.screenHeight / 12},
+                    new RowDefinition {Height = App.screenHeight / 1.213},
+                    new RowDefinition {Height = 0}
+                },
+                ColumnDefinitions = 
+                {
+                    new ColumnDefinition {Width = 0},
+                    new ColumnDefinition {Width = App.screenWidth / 10},
+                    new ColumnDefinition {Width = App.screenWidth / 5 - 32},
+                    new ColumnDefinition {Width = App.screenWidth / 5},
+                    new ColumnDefinition {Width = App.screenWidth / 5},
+                    new ColumnDefinition {Width = App.screenWidth / 5},
+                    new ColumnDefinition {Width = App.screenWidth / 10},
+                    new ColumnDefinition {Width = 0}
+                }
+            };
+
             //scrollview for the question editor
             ScrollView LinksText = new ScrollView
             {
                 IsClippedToBounds = true,
                 Content = LinksContent
             };
+
             //adding each element to the grid
             pageGrid.Children.Add(backLbl, 1, 1); //back button
             pageGrid.Children.Add(logoLayout, 2, 7, 1, 2); //qut logo
@@ -543,6 +570,7 @@ namespace INB302_WDGS
             this.Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
             this.BackgroundImage = "background.png";
             }
+
             /* simple function to go back to the activity
              * home screen when back button is clicked
              */ 

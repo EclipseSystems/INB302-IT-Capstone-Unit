@@ -13,61 +13,11 @@ namespace INB302_WDGS
     {
         public InstructionsScreen()
         {
-            //creating each layout to host all the pages content
-            StackLayout innerContent = new StackLayout
-            {
-                VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.Center
-            };
-
-            /*
-             * this stacklayout is needed for the scrollview
-             * if you do the padding and background colour in
-             * the scrollview, it makes the background colour
-             * of the grid disappear, but placing it in a stacklayout
-             * and having the same padding/background colour
-             * makes the scrollview not affect the grid.
-             * see this thread for more info:
-             * forums.xamarin.com/discussion/53974/grid-background-colour-disappears-on-load-any-way-to-fix
-            */
-            StackLayout instructionScrollViewWrapper = new StackLayout
-            {
-                Padding = new Thickness(3, 0, 2, 0),
-                BackgroundColor = Color.Black
-            };
-
-            StackLayout instructionContent = new StackLayout();
-
-            //creating a 5x6 grid 
-            //background set to white with row/column spacing
-            //which enables a border effect on the grid
-            Grid pageGrid = new Grid
-            {
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                BackgroundColor = Color.White,
-                Opacity = 0.8,
-                RowSpacing = 2,
-                ColumnSpacing = 2,
-                Padding = new Thickness(.5, 1, .5, 0),
-                RowDefinitions = {
-                    new RowDefinition {Height = 0},
-                    new RowDefinition {Height = App.screenHeight / 12},
-                    new RowDefinition {Height = App.screenHeight / 1.35},
-                    new RowDefinition {Height = App.screenHeight / 12},
-                    new RowDefinition {Height = 0}
-                },
-                ColumnDefinitions = 
-                {
-                    new ColumnDefinition {Width = 0},
-                    new ColumnDefinition {Width = App.screenWidth / 4},
-                    new ColumnDefinition {Width = App.screenWidth / 4},
-                    new ColumnDefinition {Width = App.screenWidth / 4 - 28},
-                    new ColumnDefinition {Width = App.screenWidth / 4},
-                    new ColumnDefinition {Width = 0}
-                }
-            };
-
+            //labels and images for the instructions
+            //labels and images are created in the order
+            //they are displayed on the instruction screen
+            //for simplicity
+            #region instructions
             Label instruction1Lbl = new Label
             {
                 Text = "\nScroll down to read all instructions\n\n" +
@@ -88,7 +38,6 @@ namespace INB302_WDGS
                 TextColor = Color.Gray,
                 BackgroundColor = Color.Black
             };
-
 
             Image questionIcon = new Image
             {
@@ -156,7 +105,29 @@ namespace INB302_WDGS
                 TextColor = Color.Gray,
                 BackgroundColor = Color.Black
             };
+            #endregion
 
+            Label skipLbl = new Label
+            {
+                Text = "Skip",
+                BackgroundColor = Color.Black,
+                TextColor = Color.White,
+                FontSize = 24,
+                XAlign = TextAlignment.Center,
+                YAlign = TextAlignment.Center
+            };
+
+            skipLbl.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() => goToHomeScreen()),
+            });
+
+            StackLayout instructionContent = new StackLayout();
+
+            //adding each instruction in the correct order
+            //stacklayout works like a stack with the first
+            //element being added being at the top and
+            //each element after being added below
             instructionContent.Children.Add(instruction1Lbl);
             instructionContent.Children.Add(mapIcon);
             instructionContent.Children.Add(instruction2Lbl);
@@ -177,23 +148,54 @@ namespace INB302_WDGS
                 Content = instructionContent
             };
 
-            Label skipLbl = new Label
+            /*
+             * this stacklayout is needed for the scrollview
+             * if you do the padding and background colour in
+             * the scrollview, it makes the background colour
+             * of the grid disappear, but placing it in a stacklayout
+             * and having the same padding/background colour
+             * makes the scrollview not affect the grid.
+             * see this thread for more info:
+             * forums.xamarin.com/discussion/53974/grid-background-colour-disappears-on-load-any-way-to-fix
+            */
+            StackLayout instructionScrollViewWrapper = new StackLayout
             {
-                Text = "Skip",
-                BackgroundColor = Color.Black,
-                TextColor = Color.White,
-                FontSize = 24,
-                XAlign = TextAlignment.Center,
-                YAlign = TextAlignment.Center
+                Padding = new Thickness(3, 0, 2, 0),
+                BackgroundColor = Color.Black
             };
-
-            skipLbl.GestureRecognizers.Add(new TapGestureRecognizer
-            {
-                Command = new Command(() => goToHomeScreen()),
-            });
 
             //Adding the instruction text to the scrollview
             instructionScrollViewWrapper.Children.Add(instructions);
+
+            //creating a 5x6 grid 
+            //background set to white with row/column spacing
+            //which enables a border effect on the grid
+            Grid pageGrid = new Grid
+            {
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                BackgroundColor = Color.White,
+                Opacity = 0.8,
+                RowSpacing = 2,
+                ColumnSpacing = 2,
+                Padding = new Thickness(.5, 1, .5, 0),
+                RowDefinitions = {
+                    new RowDefinition {Height = 0},
+                    new RowDefinition {Height = App.screenHeight / 12},
+                    new RowDefinition {Height = App.screenHeight / 1.35},
+                    new RowDefinition {Height = App.screenHeight / 12},
+                    new RowDefinition {Height = 0}
+                },
+                ColumnDefinitions = 
+                {
+                    new ColumnDefinition {Width = 0},
+                    new ColumnDefinition {Width = App.screenWidth / 4},
+                    new ColumnDefinition {Width = App.screenWidth / 4},
+                    new ColumnDefinition {Width = App.screenWidth / 4 - 28},
+                    new ColumnDefinition {Width = App.screenWidth / 4},
+                    new ColumnDefinition {Width = 0}
+                }
+            };
 
             //Adding each page element into the pages grid layout
             pageGrid.Children.Add(instructionScrollViewWrapper, 1, 5, 2, 3);
@@ -208,16 +210,21 @@ namespace INB302_WDGS
                 YAlign = TextAlignment.Center
             }, 1, 5, 1, 2); 
 
+            //blank label to fill blank spaces on grid
             pageGrid.Children.Add(new Label
             {
                 Text = "",
                 BackgroundColor = Color.Black,
-                TextColor = Color.White,
-                XAlign = TextAlignment.Center,
-                YAlign = TextAlignment.Center
             }, 1, 4, 3, 4);
 
             pageGrid.Children.Add(skipLbl, 4, 3);
+
+            //creating layout to host all the pages content
+            StackLayout innerContent = new StackLayout
+            {
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center
+            };
 
             //adding the grid to the stacklayout to display the content
             innerContent.Children.Add(pageGrid);

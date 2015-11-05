@@ -15,7 +15,6 @@ namespace INB302_WDGS
             //creating layouts to store each of the images within the grid
             //without this the background of the grid is white when we want
             //it to be black
-
             #region imageIconLayouts
             StackLayout logoLayout = new StackLayout
             {
@@ -131,7 +130,7 @@ namespace INB302_WDGS
 
             //creating each of the image icons for
             //the grid with their tap commands to load
-            //correct file
+            //correct activity
             #region imageIcons
 
             Image logo = new Image
@@ -208,44 +207,6 @@ namespace INB302_WDGS
             ActivityImageLayout6.Children.Add(Building6);
             ActivityImageLayout7.Children.Add(Building7);
 
-            Grid pageGrid = new Grid
-            {
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                BackgroundColor = Color.White,
-                Opacity = 0.8,
-                //row and column spacing creates a "bordered"
-                //effect around each element
-                RowSpacing = 2,
-                ColumnSpacing = 2,
-                IsClippedToBounds = true,
-                Padding = new Thickness(.5, 1, .5, 0),
-                //all row heights, and column widths are relative to
-                //the devices screen size/resolution so they should
-                //be an appropriate size on each type of device
-                RowDefinitions = {
-                    new RowDefinition {Height = 0},
-                    new RowDefinition {Height = App.screenHeight /9},
-                    new RowDefinition {Height = App.screenHeight /9},
-                    new RowDefinition {Height = App.screenHeight /9},
-                    new RowDefinition {Height = App.screenHeight /9},
-                    new RowDefinition {Height = App.screenHeight /9},
-                    new RowDefinition {Height = App.screenHeight /9},
-                    new RowDefinition {Height = App.screenHeight /9},
-                    new RowDefinition {Height = App.screenHeight /9},
-                    new RowDefinition {Height = 0}
-                },
-                ColumnDefinitions = 
-                {
-                    new ColumnDefinition {Width = 0},
-                    new ColumnDefinition {Width = App.screenWidth / 10},
-                    new ColumnDefinition {Width = App.screenWidth / 2 },
-                    new ColumnDefinition {Width = App.screenWidth / 3.33333},
-                    new ColumnDefinition {Width = 0}
-
-                }
-            };
-
             //Labels for each building activity
             #region ActivitiesLabels
             Label Activity1 = new Label
@@ -320,87 +281,78 @@ namespace INB302_WDGS
             ActivityLabelLayout5.Children.Add(Activity5);
             ActivityLabelLayout6.Children.Add(Activity6);
             ActivityLabelLayout7.Children.Add(Activity7);
-            //Layouts for each building activity
-            #region Activitieslayouts
-            StackLayout Activity1Layout = new StackLayout
-            {
-                BackgroundColor = Color.Black,
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                Padding = new Thickness(4, 0, 0, 0)
-            };
-            #endregion
 
             //tap register for each activity
+            //tap loads the activity main screen
             # region ActivityGestures
             Activity1.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                Command = new Command(() => goToQuestionsScreen1("1"))
+                Command = new Command(() => goToMainActivityScreen("1"))
             });
 
             ActivityImageLayout1.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                Command = new Command(() => goToQuestionsScreen1("1"))
+                Command = new Command(() => goToMainActivityScreen("1"))
             });
 
             Activity2.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                Command = new Command(() => goToQuestionsScreen1("2"))
+                Command = new Command(() => goToMainActivityScreen("2"))
             });
 
             ActivityImageLayout2.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                Command = new Command(() => goToQuestionsScreen1("2"))
+                Command = new Command(() => goToMainActivityScreen("2"))
             });
 
             Activity3.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                Command = new Command(() => goToQuestionsScreen1("3"))
+                Command = new Command(() => goToMainActivityScreen("3"))
             });
 
             ActivityImageLayout3.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                Command = new Command(() => goToQuestionsScreen1("3"))
+                Command = new Command(() => goToMainActivityScreen("3"))
             });
 
             Activity4.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                Command = new Command(() => goToQuestionsScreen1("4"))
+                Command = new Command(() => goToMainActivityScreen("4"))
             });
 
             ActivityImageLayout4.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                Command = new Command(() => goToQuestionsScreen1("4"))
+                Command = new Command(() => goToMainActivityScreen("4"))
             });
 
             Activity5.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                Command = new Command(() => goToQuestionsScreen1("5"))
+                Command = new Command(() => goToMainActivityScreen("5"))
             });
 
             ActivityImageLayout5.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                Command = new Command(() => goToQuestionsScreen1("5"))
+                Command = new Command(() => goToMainActivityScreen("5"))
             });
 
             Activity6.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                Command = new Command(() => goToQuestionsScreen1("6"))
+                Command = new Command(() => goToMainActivityScreen("6"))
             });
 
             ActivityImageLayout6.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                Command = new Command(() => goToQuestionsScreen1("6"))
+                Command = new Command(() => goToMainActivityScreen("6"))
             });
 
             Activity7.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                Command = new Command(() => goToQuestionsScreen1("7"))
+                Command = new Command(() => goToMainActivityScreen("7"))
             });
 
             ActivityImageLayout7.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                Command = new Command(() => goToQuestionsScreen1("7"))
+                Command = new Command(() => goToMainActivityScreen("7"))
             });
 
             #endregion
@@ -420,7 +372,47 @@ namespace INB302_WDGS
             {
                 Command = new Command(() => goBack())
             });
-            
+
+
+            //Creating a new 10 x 5 grid
+            Grid pageGrid = new Grid
+            {
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                BackgroundColor = Color.White,
+                Opacity = 0.8,
+                //row and column spacing creates a "bordered"
+                //effect around each element
+                RowSpacing = 2,
+                ColumnSpacing = 2,
+                IsClippedToBounds = true,
+                Padding = new Thickness(.5, 1, .5, 0),
+                //all row heights, and column widths are relative to
+                //the devices screen size/resolution so they should
+                //be an appropriate size on each type of device
+                RowDefinitions = {
+                    new RowDefinition {Height = 0},
+                    new RowDefinition {Height = App.screenHeight /9},
+                    new RowDefinition {Height = App.screenHeight /9},
+                    new RowDefinition {Height = App.screenHeight /9},
+                    new RowDefinition {Height = App.screenHeight /9},
+                    new RowDefinition {Height = App.screenHeight /9},
+                    new RowDefinition {Height = App.screenHeight /9},
+                    new RowDefinition {Height = App.screenHeight /9},
+                    new RowDefinition {Height = App.screenHeight /9},
+                    new RowDefinition {Height = 0}
+                },
+                ColumnDefinitions = 
+                {
+                    new ColumnDefinition {Width = 0},
+                    new ColumnDefinition {Width = App.screenWidth / 10},
+                    new ColumnDefinition {Width = App.screenWidth / 2 },
+                    new ColumnDefinition {Width = App.screenWidth / 3.33333},
+                    new ColumnDefinition {Width = 0}
+
+                }
+            };
+
             //adding each element to the grid
             pageGrid.Children.Add(backLbl, 1, 1); //back button
             pageGrid.Children.Add(logoLayout, 2, 4, 1, 2);
@@ -438,11 +430,13 @@ namespace INB302_WDGS
             pageGrid.Children.Add(ActivityImageLayout5, 3, 4, 6, 7);
             pageGrid.Children.Add(ActivityImageLayout6, 3, 4, 7, 8);
             pageGrid.Children.Add(ActivityImageLayout7, 3, 4, 8, 9);
+
             StackLayout innerContent = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center
             };
+
             innerContent.Children.Add(pageGrid);
 
             //making the pages content the stacklayout with the grid
@@ -455,7 +449,7 @@ namespace INB302_WDGS
         {
             App.Current.MainPage = new HomeScreen();
         }
-        private void goToQuestionsScreen1(string act)
+        private void goToMainActivityScreen(string act)
         {
             App.currentActivity = act;
             App.Current.MainPage = new QuestionsScreen();
