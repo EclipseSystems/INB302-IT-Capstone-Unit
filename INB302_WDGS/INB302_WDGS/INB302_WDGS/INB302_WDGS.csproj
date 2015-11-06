@@ -44,8 +44,8 @@
     <Compile Include="QuestionsScreen.cs" />
     <Compile Include="RelevantLinksScreen.cs" />
     <Compile Include="ViewModels\CameraClass.cs" />
-    <Compile Include="MapScreen.cs" />
     <Compile Include="MainActivityScreen.cs" />
+    <Compile Include="MapScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

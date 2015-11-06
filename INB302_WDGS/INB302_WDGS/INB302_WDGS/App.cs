@@ -27,7 +27,7 @@ namespace INB302_WDGS {
             }
             else
             {
-                MainPage = new LoadingScreen();
+				MainPage = new LoadingScreen ();
             }
         }
 

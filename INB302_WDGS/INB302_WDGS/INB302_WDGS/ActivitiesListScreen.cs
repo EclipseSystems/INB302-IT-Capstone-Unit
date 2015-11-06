@@ -452,7 +452,7 @@ namespace INB302_WDGS
         private void goToMainActivityScreen(string act)
         {
             App.currentActivity = act;
-            App.Current.MainPage = new QuestionsScreen();
+			App.Current.MainPage = new MainActivityScreen ();
         }
         
     }

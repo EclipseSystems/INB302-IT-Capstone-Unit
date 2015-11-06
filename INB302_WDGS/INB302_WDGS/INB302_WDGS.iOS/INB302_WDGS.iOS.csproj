@@ -129,6 +129,7 @@
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="packages.config" />
+    <None Include="Resources\homeIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\INB302_WDGS\INB302_WDGS.csproj">
